@@ -29,7 +29,8 @@ import {
   Dice6,
   Wrench,
   ArrowUpWideNarrow,
-  EyeOff
+  EyeOff,
+  Monitor
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -64,7 +65,8 @@ const categorizedTools = [
       { name: "CSV ⇄ JSON", description: "Convert between CSV and JSON formats", path: "/csv-json", icon: Table, color: "from-green-500 to-green-600" },
       { name: "CSV Table Viewer", description: "View CSV data as a formatted table", path: "/csv-table-viewer", icon: Table, color: "from-green-500 to-green-600" },
       { name: "Base64", description: "Encode and decode Base64 strings", path: "/base64", icon: FileKey, color: "from-red-500 to-red-600" },
-      { name: "Base64 File Converter", description: "Encode and decode files to and from Base64", path: "/base64-file-converter", icon: FileKey, color: "from-red-500 to-red-600" }
+      { name: "Base64 File Converter", description: "Encode and decode files to and from Base64", path: "/base64-file-converter", icon: FileKey, color: "from-red-500 to-red-600" },
+      { name: "JSON Validator", description: "Validate and format JSON with detailed error messages", path: "/json-validator", icon: FileJson, color: "from-blue-500 to-blue-600" }
     ]
   },
   {
@@ -88,7 +90,8 @@ const categorizedTools = [
       { name: "CSS Unit Converter", description: "Convert between different CSS units", path: "/css-unit-converter", icon: Ruler, color: "from-yellow-500 to-yellow-600" },
       { name: "CSS Formatter", description: "Format and beautify CSS code", path: "/css-formatter", icon: Code, color: "from-teal-500 to-teal-600" },
       { name: "SVG Cleaner", description: "Paste SVG code → minifies, removes unnecessary metadata, and formats it cleanly.", path: "/svg-cleaner", icon: Wand2, color: "from-purple-500 to-purple-600" },
-      { name: "Color Blindness Simulator", description: "Input image or color palette → shows how it looks for different types of color blindness (protanopia, deuteranopia, etc.)", path: "/color-blindness-simulator", icon: EyeOff, color: "from-purple-500 to-purple-600" }
+      { name: "Color Blindness Simulator", description: "Input image or color palette → shows how it looks for different types of color blindness (protanopia, deuteranopia, etc.)", path: "/color-blindness-simulator", icon: EyeOff, color: "from-purple-500 to-purple-600" },
+      { name: "Screen DPI Calculator", description: "Calculate screen density, dimensions, and PPI for different devices", path: "/screen-dpi-calculator", icon: Monitor, color: "from-blue-500 to-blue-600" }
     ]
   },
   {
