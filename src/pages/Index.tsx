@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { 
   FileJson, 
@@ -12,132 +11,205 @@ import {
   Search,
   Wand2,
   Palette,
-  GitCompare
+  GitCompare,
+  Eye,
+  Filter,
+  Calculator,
+  Eraser,
+  Percent,
+  Scissors,
+  Home,
+  Code,
+  SquareStack,
+  Ruler,
+  Info,
+  Smartphone,
+  Paintbrush,
+  Globe,
+  Dice6,
+  Wrench,
+  ArrowUpWideNarrow,
+  EyeOff
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { useState, useMemo } from 'react';
 
-const tools = [
+const categorizedTools = [
+  // {
+  //   category: "General",
+  //   items: [
+  //     { name: "Home", description: "Go to the homepage", path: "/", icon: Home, color: "from-blue-600 to-purple-600" }
+  //   ]
+  // },
   {
-    name: "JSON Converter",
-    description: "Format, validate, and convert JSON ⇄ String",
-    path: "/json",
-    icon: FileJson,
-    color: "from-blue-500 to-blue-600"
+    category: "Text Tools",
+    items: [
+      { name: "Text Case", description: "Convert between camelCase, snake_case, PascalCase", path: "/text-case", icon: Type, color: "from-pink-500 to-pink-600" },
+      { name: "Character Counter", description: "Count characters, words, and lines in text", path: "/character-counter", icon: Calculator, color: "from-teal-500 to-teal-600" },
+      { name: "Whitespace Cleaner", description: "Remove extra spaces, tabs, and empty lines", path: "/whitespace-cleaner", icon: Eraser, color: "from-indigo-500 to-indigo-600" },
+      { name: "Duplicate Line Remover", description: "Remove duplicate lines from text", path: "/duplicate-line-remover", icon: Filter, color: "from-orange-500 to-orange-600" },
+      { name: "Prompt Splitter", description: "Split long prompts into smaller chunks", path: "/prompt-splitter", icon: Scissors, color: "from-red-500 to-red-600" },
+      { name: "Lorem Ipsum Generator", description: "Generate placeholder text with HTML tags", path: "/lorem-ipsum-generator", icon: Type, color: "from-purple-500 to-purple-600" },
+      { name: "Text Diff Highlighter", description: "Compare two text versions and highlight differences", path: "/text-diff-highlighter", icon: GitCompare, color: "from-violet-500 to-violet-600" },
+      { name: "Tab to Space Converter", description: "Convert tabs to spaces or vice versa", path: "/tab-space-converter", icon: Code, color: "from-cyan-500 to-cyan-600" },
+      { name: "Text Sorter", description: "Paste list of text items → sort alphabetically, reverse, random, or numerically.", path: "/text-sorter", icon: ArrowUpWideNarrow, color: "from-cyan-500 to-cyan-600" }
+    ]
   },
   {
-    name: "CSV ⇄ JSON",
-    description: "Convert between CSV and JSON formats",
-    path: "/csv-json",
-    icon: Table,
-    color: "from-green-500 to-green-600"
+    category: "Data Tools",
+    items: [
+      { name: "JSON", description: "Format, validate, and convert JSON ⇄ String", path: "/json", icon: FileJson, color: "from-blue-500 to-blue-600" },
+      { name: "JSON Beautifier", description: "Format and beautify JSON code", path: "/json-beautifier", icon: Wand2, color: "from-teal-500 to-teal-600" },
+      { name: "CSV ⇄ JSON", description: "Convert between CSV and JSON formats", path: "/csv-json", icon: Table, color: "from-green-500 to-green-600" },
+      { name: "CSV Table Viewer", description: "View CSV data as a formatted table", path: "/csv-table-viewer", icon: Table, color: "from-green-500 to-green-600" },
+      { name: "Base64", description: "Encode and decode Base64 strings", path: "/base64", icon: FileKey, color: "from-red-500 to-red-600" },
+      { name: "Base64 File Converter", description: "Encode and decode files to and from Base64", path: "/base64-file-converter", icon: FileKey, color: "from-red-500 to-red-600" }
+    ]
   },
   {
-    name: "URL Converter",
-    description: "Encode and decode URL strings",
-    path: "/url",
-    icon: LinkIcon,
-    color: "from-purple-500 to-purple-600"
+    category: "Web Tools",
+    items: [
+      { name: "URL Parser", description: "Parse and analyze URL components", path: "/url-parser", icon: LinkIcon, color: "from-purple-500 to-purple-600" },
+      { name: "URL Encoder/Decoder", description: "Encode and decode URL strings", path: "/url", icon: LinkIcon, color: "from-purple-500 to-purple-600" },
+      { name: "SVG URL Encoder", description: "Convert SVG to URL-encoded format", path: "/svg-url-encoder", icon: Code, color: "from-blue-500 to-blue-600" },
+      { name: "HTTP Status Code Explainer", description: "Get detailed explanations of HTTP status codes", path: "/http-status-code-explainer", icon: Info, color: "from-teal-500 to-teal-600" },
+      { name: "Responsive Image Tester", description: "Test how images look on different screen sizes", path: "/responsive-image-tester", icon: Smartphone, color: "from-blue-500 to-blue-600" }
+    ]
   },
   {
-    name: "Base64 Converter",
-    description: "Encode and decode Base64 strings",
-    path: "/base64",
-    icon: FileKey,
-    color: "from-red-500 to-red-600"
+    category: "Design Tools",
+    items: [
+      { name: "Color Converter", description: "Convert between HEX, RGB, and HSL formats", path: "/color-converter", icon: Palette, color: "from-cyan-500 to-cyan-600" },
+      { name: "Color Picker", description: "Visually select a color and get HEX, RGB, HSL values", path: "/color-picker", icon: Palette, color: "from-cyan-500 to-cyan-600" },
+      { name: "Color Name", description: "Find the name of a color from its HEX value", path: "/color-name", icon: Eye, color: "from-purple-500 to-purple-600" },
+      { name: "CSS Gradient Generator", description: "Create beautiful CSS gradients", path: "/css-gradient-generator", icon: Paintbrush, color: "from-pink-500 to-pink-600" },
+      { name: "Box Shadow Generator", description: "Generate CSS box-shadow values", path: "/box-shadow-generator", icon: SquareStack, color: "from-pink-500 to-pink-600" },
+      { name: "CSS Unit Converter", description: "Convert between different CSS units", path: "/css-unit-converter", icon: Ruler, color: "from-yellow-500 to-yellow-600" },
+      { name: "CSS Formatter", description: "Format and beautify CSS code", path: "/css-formatter", icon: Code, color: "from-teal-500 to-teal-600" },
+      { name: "SVG Cleaner", description: "Paste SVG code → minifies, removes unnecessary metadata, and formats it cleanly.", path: "/svg-cleaner", icon: Wand2, color: "from-purple-500 to-purple-600" },
+      { name: "Color Blindness Simulator", description: "Input image or color palette → shows how it looks for different types of color blindness (protanopia, deuteranopia, etc.)", path: "/color-blindness-simulator", icon: EyeOff, color: "from-purple-500 to-purple-600" }
+    ]
   },
   {
-    name: "UUID Generator",
-    description: "Generate unique identifiers instantly",
-    path: "/uuid",
-    icon: Hash,
-    color: "from-yellow-500 to-yellow-600"
+    category: "Development Tools",
+    items: [
+      { name: "Regex Tester", description: "Test and debug regular expressions", path: "/regex", icon: Search, color: "from-orange-500 to-orange-600" },
+      { name: "Diff Checker", description: "Compare text differences side-by-side", path: "/diff-checker", icon: GitCompare, color: "from-violet-500 to-violet-600" },
+      { name: "UUID Generator", description: "Generate random UUIDs", path: "/uuid", icon: Hash, color: "from-yellow-500 to-yellow-600" },
+      { name: "Password Strength Checker", description: "Check the strength of your passwords", path: "/password-strength-checker", icon: FileKey, color: "from-red-500 to-red-600" },
+      { name: "Checkbox/Radio Generator", description: "Generate styled checkbox and radio inputs", path: "/checkbox-radio-generator", icon: SquareStack, color: "from-blue-500 to-blue-600" },
+      { name: "Developer Excuse Generator", description: "Generate random developer excuses", path: "/developer-excuse-generator", icon: Dice6, color: "from-purple-500 to-purple-600" }
+    ]
   },
   {
-    name: "Timestamp Converter",
-    description: "Convert between UNIX timestamps and human dates",
-    path: "/timestamp",
-    icon: Clock,
-    color: "from-indigo-500 to-indigo-600"
+    category: "Time & Date",
+    items: [
+      { name: "Timestamp Converter", description: "Convert between timestamps and dates", path: "/timestamp", icon: Clock, color: "from-indigo-500 to-indigo-600" },
+      { name: "TimeZone Converter", description: "Convert times between different timezones", path: "/timezone-converter", icon: Globe, color: "from-indigo-500 to-indigo-600" },
+      { name: "Cron Job Generator", description: "Generate cron job expressions", path: "/cron-job-generator", icon: Clock, color: "from-indigo-500 to-indigo-600" },
+      { name: "Date Difference Calculator", description: "Calculate the difference between two dates in days, weeks, and months", path: "/date-difference-calculator", icon: Clock, color: "from-indigo-500 to-indigo-600" },
+      { name: "Cron Expression Visualizer", description: "Visualize cron expressions and see upcoming execution times", path: "/cron-expression-visualizer", icon: Clock, color: "from-indigo-500 to-indigo-600" }
+    ]
   },
   {
-    name: "Text Case Converter",
-    description: "Convert between camelCase, snake_case, PascalCase",
-    path: "/text-case",
-    icon: Type,
-    color: "from-pink-500 to-pink-600"
-  },
-  {
-    name: "Regex Tester",
-    description: "Test regex patterns and view match results",
-    path: "/regex",
-    icon: Search,
-    color: "from-orange-500 to-orange-600"
-  },
-  {
-    name: "JSON Beautifier",
-    description: "Format and minify JSON data",
-    path: "/json-beautifier",
-    icon: Wand2,
-    color: "from-teal-500 to-teal-600"
-  },
-  {
-    name: "Color Converter",
-    description: "Convert between HEX, RGB, and HSL formats",
-    path: "/color-converter",
-    icon: Palette,
-    color: "from-cyan-500 to-cyan-600"
-  },
-  {
-    name: "Diff Checker",
-    description: "Compare text differences side-by-side",
-    path: "/diff-checker",
-    icon: GitCompare,
-    color: "from-violet-500 to-violet-600"
+    category: "Calculators",
+    items: [
+      { name: "Percent-off Calculator", description: "Calculate the final price after a discount", path: "/percent-off-calculator", icon: Percent, color: "from-yellow-500 to-yellow-600" },
+      { name: "Basic Percentage Calculator", description: "Perform basic percentage calculations", path: "/percentage-calculator", icon: Calculator, color: "from-green-500 to-green-600" },
+      { name: "Unit Converter", description: "Convert between different units of measurement", path: "/unit-converter", icon: Ruler, color: "from-yellow-500 to-yellow-600" }
+    ]
   }
 ];
 
 const Index = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredCategories = useMemo(() => {
+    if (!searchTerm) {
+      return categorizedTools;
+    }
+
+    const lowerCaseSearchTerm = searchTerm.toLowerCase();
+
+    return categorizedTools.map(categoryGroup => ({
+      ...categoryGroup,
+      items: categoryGroup.items.filter(tool => 
+        tool.name.toLowerCase().includes(lowerCaseSearchTerm) ||
+        tool.description.toLowerCase().includes(lowerCaseSearchTerm)
+      )
+    })).filter(categoryGroup => categoryGroup.items.length > 0);
+  }, [searchTerm]);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
             Dev Toolbox
           </h1>
-          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto mb-6">
             Instant converters and utilities for developers. Fast, clean, and completely client-side.
           </p>
+          <div className="max-w-md mx-auto">
+            <Input 
+              placeholder="Quick search tools..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full"
+            />
+          </div>
         </div>
 
         {/* Tools Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-          {tools.map((tool) => {
-            const Icon = tool.icon;
-            return (
-              <Link key={tool.path} to={tool.path}>
-                <Card className="h-full hover:shadow-lg transition-all duration-200 hover:-translate-y-1 cursor-pointer group">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-3">
-                      <div className={`p-2 rounded-lg bg-gradient-to-r ${tool.color} text-white`}>
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <span className="text-lg">{tool.name}</span>
-                      <ArrowRight className="h-4 w-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-slate-600">{tool.description}</p>
-                  </CardContent>
-                </Card>
-              </Link>
-            );
-          })}
+        <div className="max-w-6xl mx-auto space-y-8">
+          {filteredCategories.map((categoryGroup) => (
+            <div key={categoryGroup.category}>
+              <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-slate-100">{categoryGroup.category}</h2>
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {categoryGroup.items.map((tool) => {
+                  const Icon = tool.icon;
+                  return (
+                    <Link key={tool.path} to={tool.path}>
+                      <Card className="h-full hover:shadow-lg transition-all duration-200 hover:-translate-y-1 cursor-pointer group dark:bg-slate-800 dark:border-slate-700">
+                        <CardHeader>
+                          <CardTitle className="flex items-center gap-3 text-slate-900 dark:text-slate-100">
+                            <div className={`p-2 rounded-lg bg-gradient-to-r ${tool.color} text-white`}>
+                              <Icon className="h-5 w-5" />
+                            </div>
+                            <span className="text-lg">{tool.name}</span>
+                            <ArrowRight className="h-4 w-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-slate-600 dark:text-slate-400">{tool.description}</p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-16 text-slate-500">
-          <p>🔒 All processing happens in your browser. No data is stored or transmitted.</p>
+        <div className="text-center mt-16 space-y-2">
+          <p className="text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1">
+            <Wrench className="inline-block h-4 w-4 mr-1" />
+            All processing happens in your browser. No data is stored or transmitted.
+          </p>
+          <p className="text-slate-500 dark:text-slate-400">
+            Developed by{" "}
+            <a 
+              href="#"
+              rel="noopener noreferrer"
+              className="text-blue-600 dark:text-blue-400 hover:underline"
+            >
+              MR - Rai
+            </a>
+          </p>
         </div>
       </div>
     </div>
