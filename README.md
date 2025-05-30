@@ -1,3 +1,92 @@
+# Dev Toolbox Quick
+
+A modern React application built with Vite, TypeScript, and shadcn-ui components.
+
+## Project Overview
+
+This project is a development toolbox application that provides a collection of useful development tools and utilities. It's built with modern web technologies and follows best practices for React development.
+
+## Tech Stack
+
+- **Framework**: React 18 with TypeScript
+- **Build Tool**: Vite
+- **UI Components**: shadcn-ui (based on Radix UI)
+- **Styling**: Tailwind CSS
+- **Form Handling**: React Hook Form with Zod validation
+- **State Management**: React Query
+- **Routing**: React Router DOM
+- **Date Handling**: date-fns
+- **Charts**: Recharts
+- **Notifications**: Sonner
+- **Development Tools**: ESLint, TypeScript, SWC
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (Latest LTS version recommended)
+- npm or bun package manager
+
+### Installation
+
+```sh
+# Clone the repository
+git clone <YOUR_GIT_URL>
+
+# Navigate to the project directory
+cd dev-toolbox-quick
+
+# Install dependencies
+npm install
+# or if using bun
+bun install
+
+# Start the development server
+npm run dev
+# or
+bun dev
+```
+
+The application will be available at `http://localhost:5173` by default.
+
+## Available Scripts
+
+- `npm run dev` - Start the development server
+- `npm run build` - Build for production
+- `npm run build:dev` - Build for development
+- `npm run lint` - Run ESLint
+- `npm run preview` - Preview the production build locally
+
+## Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── pages/         # Page components
+├── hooks/         # Custom React hooks
+├── lib/           # Utility functions and configurations
+├── App.tsx        # Main application component
+└── main.tsx       # Application entry point
+```
+
+## Development Guidelines
+
+1. Follow TypeScript best practices and maintain type safety
+2. Use shadcn-ui components for consistent UI
+3. Follow the established project structure
+4. Write clean, maintainable code with proper documentation
+5. Use ESLint for code quality
+
+## Contributing
+
+1. Create a new branch for your feature
+2. Make your changes
+3. Submit a pull request
+
+## License
+
+This project is proprietary and confidential.
+
 # Welcome to your Lovable project
 
 ## Project info
