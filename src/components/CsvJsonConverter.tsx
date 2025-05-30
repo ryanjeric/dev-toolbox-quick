@@ -4,6 +4,7 @@ import { Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 
 const CsvJsonConverter = () => {
@@ -18,22 +19,21 @@ const CsvJsonConverter = () => {
       setJsonOutput("");
       return;
     }
-
-    try {
-      const lines = csv.trim().split('\n');
-      const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
-      const result = lines.slice(1).map(line => {
-        const values = line.split(',').map(v => v.trim().replace(/"/g, ''));
-        const obj: Record<string, string> = {};
-        headers.forEach((header, index) => {
-          obj[header] = values[index] || '';
-        });
-        return obj;
+    
+    const lines = csv.trim().split('\n');
+    const headers = lines[0].split(',').map(h => h.trim());
+    const result = [];
+    
+    for (let i = 1; i < lines.length; i++) {
+      const values = lines[i].split(',').map(v => v.trim());
+      const obj: any = {};
+      headers.forEach((header, index) => {
+        obj[header] = values[index] || '';
       });
-      setJsonOutput(JSON.stringify(result, null, 2));
-    } catch (err) {
-      setJsonOutput("Error parsing CSV");
+      result.push(obj);
     }
+    
+    setJsonOutput(JSON.stringify(result, null, 2));
   };
 
   const jsonToCsv = (json: string) => {
@@ -41,22 +41,25 @@ const CsvJsonConverter = () => {
       setCsvOutput("");
       return;
     }
-
+    
     try {
       const data = JSON.parse(json);
       if (!Array.isArray(data) || data.length === 0) {
-        setCsvOutput("JSON must be an array of objects");
+        setCsvOutput("Input must be an array of objects");
         return;
       }
-
+      
       const headers = Object.keys(data[0]);
-      const csvHeaders = headers.join(',');
-      const csvRows = data.map(row => 
-        headers.map(header => `"${row[header] || ''}"`).join(',')
-      );
-      setCsvOutput([csvHeaders, ...csvRows].join('\n'));
+      const csvRows = [headers.join(',')];
+      
+      data.forEach(row => {
+        const values = headers.map(header => row[header] || '');
+        csvRows.push(values.join(','));
+      });
+      
+      setCsvOutput(csvRows.join('\n'));
     } catch (err) {
-      setCsvOutput("Error parsing JSON");
+      setCsvOutput("Invalid JSON");
     }
   };
 
@@ -75,80 +78,89 @@ const CsvJsonConverter = () => {
           <span className="text-lg">CSV ⇄ JSON</span>
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        {/* CSV to JSON */}
-        <div>
-          <label className="text-sm font-medium mb-2 block">CSV input:</label>
-          <Textarea
-            placeholder="name,email,age&#10;John,john@email.com,30&#10;Jane,jane@email.com,25"
-            value={csvInput}
-            onChange={(e) => {
-              setCsvInput(e.target.value);
-              csvToJson(e.target.value);
-            }}
-            className="font-mono text-sm"
-            rows={4}
-          />
-        </div>
-
-        {jsonOutput && (
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <label className="text-sm font-medium">JSON output:</label>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => copyToClipboard(jsonOutput)}
-                className="h-7 px-2"
-              >
-                <Copy className="h-3 w-3" />
-              </Button>
+      <CardContent>
+        <Tabs defaultValue="csv-to-json" className="w-full">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="csv-to-json">CSV → JSON</TabsTrigger>
+            <TabsTrigger value="json-to-csv">JSON → CSV</TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="csv-to-json" className="space-y-4">
+            <div>
+              <label className="text-sm font-medium mb-2 block">CSV input:</label>
+              <Textarea
+                placeholder="name,age,city&#10;John,30,NYC&#10;Jane,25,LA"
+                value={csvInput}
+                onChange={(e) => {
+                  setCsvInput(e.target.value);
+                  csvToJson(e.target.value);
+                }}
+                className="font-mono text-sm"
+                rows={4}
+              />
             </div>
-            <Textarea
-              value={jsonOutput}
-              readOnly
-              className="font-mono text-sm bg-slate-50"
-              rows={5}
-            />
-          </div>
-        )}
 
-        {/* JSON to CSV */}
-        <div>
-          <label className="text-sm font-medium mb-2 block">JSON array input:</label>
-          <Textarea
-            placeholder='[{"name":"John","email":"john@email.com"}]'
-            value={jsonInput}
-            onChange={(e) => {
-              setJsonInput(e.target.value);
-              jsonToCsv(e.target.value);
-            }}
-            className="font-mono text-sm"
-            rows={3}
-          />
-        </div>
+            {jsonOutput && (
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-sm font-medium">JSON output:</label>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => copyToClipboard(jsonOutput)}
+                    className="h-7 px-2"
+                  >
+                    <Copy className="h-3 w-3" />
+                  </Button>
+                </div>
+                <Textarea
+                  value={jsonOutput}
+                  readOnly
+                  className="font-mono text-sm bg-slate-50"
+                  rows={6}
+                />
+              </div>
+            )}
+          </TabsContent>
 
-        {csvOutput && (
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <label className="text-sm font-medium">CSV output:</label>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => copyToClipboard(csvOutput)}
-                className="h-7 px-2"
-              >
-                <Copy className="h-3 w-3" />
-              </Button>
+          <TabsContent value="json-to-csv" className="space-y-4">
+            <div>
+              <label className="text-sm font-medium mb-2 block">JSON input (array of objects):</label>
+              <Textarea
+                placeholder='[{"name":"John","age":30,"city":"NYC"},{"name":"Jane","age":25,"city":"LA"}]'
+                value={jsonInput}
+                onChange={(e) => {
+                  setJsonInput(e.target.value);
+                  jsonToCsv(e.target.value);
+                }}
+                className="font-mono text-sm"
+                rows={4}
+              />
             </div>
-            <Textarea
-              value={csvOutput}
-              readOnly
-              className="font-mono text-sm bg-slate-50"
-              rows={4}
-            />
-          </div>
-        )}
+
+            {csvOutput && (
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-sm font-medium">CSV output:</label>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => copyToClipboard(csvOutput)}
+                    className="h-7 px-2"
+                  >
+                    <Copy className="h-3 w-3" />
+                  </Button>
+                </div>
+                <Textarea
+                  value={csvOutput}
+                  readOnly
+                  className="font-mono text-sm bg-slate-50"
+                  rows={4}
+                />
+              </div>
+            )}
+          </TabsContent>
+        </Tabs>
       </CardContent>
     </Card>
   );
