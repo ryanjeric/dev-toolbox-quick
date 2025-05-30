@@ -8,7 +8,11 @@ import {
   Hash,
   Clock,
   Type,
-  ArrowRight
+  ArrowRight,
+  Search,
+  Wand2,
+  Palette,
+  GitCompare
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -61,6 +65,34 @@ const tools = [
     path: "/text-case",
     icon: Type,
     color: "from-pink-500 to-pink-600"
+  },
+  {
+    name: "Regex Tester",
+    description: "Test regex patterns and view match results",
+    path: "/regex",
+    icon: Search,
+    color: "from-orange-500 to-orange-600"
+  },
+  {
+    name: "JSON Beautifier",
+    description: "Format and minify JSON data",
+    path: "/json-beautifier",
+    icon: Wand2,
+    color: "from-teal-500 to-teal-600"
+  },
+  {
+    name: "Color Converter",
+    description: "Convert between HEX, RGB, and HSL formats",
+    path: "/color-converter",
+    icon: Palette,
+    color: "from-cyan-500 to-cyan-600"
+  },
+  {
+    name: "Diff Checker",
+    description: "Compare text differences side-by-side",
+    path: "/diff-checker",
+    icon: GitCompare,
+    color: "from-violet-500 to-violet-600"
   }
 ];
 
