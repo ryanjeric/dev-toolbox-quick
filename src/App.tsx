@@ -53,6 +53,8 @@ import TabSpaceConverterPage from "./pages/TabSpaceConverterPage";
 import TextSorterPage from "./pages/TextSorterPage";
 import SvgCleanerPage from "./pages/SvgCleanerPage";
 import ColorBlindnessSimulatorPage from "./pages/ColorBlindnessSimulatorPage";
+import JsonValidatorPage from "./pages/JsonValidatorPage";
+import ScreenDpiCalculatorPage from "./pages/ScreenDpiCalculatorPage";
 
 const queryClient = new QueryClient();
 
@@ -117,6 +119,8 @@ const App = () => (
                     <Route path="/text-sorter" element={<TextSorterPage />} />
                     <Route path="/svg-cleaner" element={<SvgCleanerPage />} />
                     <Route path="/color-blindness-simulator" element={<ColorBlindnessSimulatorPage />} />
+                    <Route path="/json-validator" element={<JsonValidatorPage />} />
+                    <Route path="/screen-dpi-calculator" element={<ScreenDpiCalculatorPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>

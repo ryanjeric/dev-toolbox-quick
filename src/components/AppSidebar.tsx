@@ -27,7 +27,8 @@ import {
   Paintbrush,
   Smartphone,
   ArrowUpWideNarrow,
-  EyeOff
+  EyeOff,
+  Monitor
 } from "lucide-react";
 import {
   Sidebar,
@@ -75,6 +76,7 @@ const categorizedNavigationItems = [
       { name: "CSV Table Viewer", path: "/csv-table-viewer", icon: Table },
       { name: "Base64", path: "/base64", icon: FileKey },
       { name: "Base64 File Converter", path: "/base64-file-converter", icon: FileKey },
+      { name: "JSON Validator", path: "/json-validator", icon: FileJson },
     ]
   },
   {
@@ -97,7 +99,8 @@ const categorizedNavigationItems = [
       { name: "Box Shadow Generator", path: "/box-shadow-generator", icon: SquareStack },
       { name: "CSS Unit Converter", path: "/css-unit-converter", icon: Ruler },
       { name: "SVG Cleaner", path: "/svg-cleaner", icon: Wand2 },
-      { name: "Color Blindness Simulator", path: "/color-blindness-simulator", icon: EyeOff }
+      { name: "Color Blindness Simulator", path: "/color-blindness-simulator", icon: EyeOff },
+      { name: "Screen DPI Calculator", path: "/screen-dpi-calculator", icon: Monitor }
     ]
   },
   {
