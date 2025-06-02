@@ -52,6 +52,7 @@ const categorizedNavigationItems = [
     category: "General",
     items: [
       { name: "Home", path: "/", icon: Home },
+      { name: "Calculator", path: "/calculator", icon: Calculator },
     ]
   },
   {

@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -57,6 +56,7 @@ import ColorBlindnessSimulatorPage from "./pages/ColorBlindnessSimulatorPage";
 import JsonValidatorPage from "./pages/JsonValidatorPage";
 import ScreenDpiCalculatorPage from "./pages/ScreenDpiCalculatorPage";
 import ImageConverterPage from "./pages/ImageConverterPage";
+import CalculatorPage from "./pages/CalculatorPage";
 
 const queryClient = new QueryClient();
 
@@ -124,6 +124,7 @@ const App = () => (
                     <Route path="/json-validator" element={<JsonValidatorPage />} />
                     <Route path="/screen-dpi-calculator" element={<ScreenDpiCalculatorPage />} />
                     <Route path="/image-converter" element={<ImageConverterPage />} />
+                    <Route path="/calculator" element={<CalculatorPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>

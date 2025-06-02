@@ -38,12 +38,12 @@ import { Input } from "@/components/ui/input";
 import { useState, useMemo } from 'react';
 
 const categorizedTools = [
-  // {
-  //   category: "General",
-  //   items: [
-  //     { name: "Home", description: "Go to the homepage", path: "/", icon: Home, color: "from-blue-600 to-purple-600" }
-  //   ]
-  // },
+  {
+    category: "General Tools",
+    items: [
+      { name: "Calculator", description: "Basic calculator for mathematical operations", path: "/calculator", icon: Calculator, color: "from-green-500 to-green-600" }
+    ]
+  },
   {
     category: "Text Tools",
     items: [
