@@ -106,14 +106,10 @@ const categorizedTools = [
       { name: "Color Converter", description: "Convert between HEX, RGB, and HSL formats", path: "/color-converter", icon: Palette, color: "from-cyan-500 to-cyan-600" },
       { name: "Color Picker", description: "Visually select a color and get HEX, RGB, HSL values", path: "/color-picker", icon: Palette, color: "from-cyan-500 to-cyan-600" },
       { name: "Color Name", description: "Find the name of a color from its HEX value", path: "/color-name", icon: Eye, color: "from-purple-500 to-purple-600" },
-      { name: "CSS Gradient Generator", description: "Create beautiful CSS gradients", path: "/css-gradient-generator", icon: Paintbrush, color: "from-pink-500 to-pink-600" },
-      { name: "Box Shadow Generator", description: "Generate CSS box-shadow values", path: "/box-shadow-generator", icon: SquareStack, color: "from-pink-500 to-pink-600" },
-      { name: "CSS Unit Converter", description: "Convert between different CSS units", path: "/css-unit-converter", icon: Ruler, color: "from-yellow-500 to-yellow-600" },
-      { name: "CSS Formatter", description: "Format and beautify CSS code", path: "/css-formatter", icon: Code, color: "from-teal-500 to-teal-600" },
-      { name: "SVG Cleaner", description: "Paste SVG code → minifies, removes unnecessary metadata, and formats it cleanly.", path: "/svg-cleaner", icon: Wand2, color: "from-purple-500 to-purple-600" },
       { name: "Color Blindness Simulator", description: "Input image or color palette → shows how it looks for different types of color blindness (protanopia, deuteranopia, etc.)", path: "/color-blindness-simulator", icon: EyeOff, color: "from-purple-500 to-purple-600" },
       { name: "Screen DPI Calculator", description: "Calculate screen density, dimensions, and PPI for different devices", path: "/screen-dpi-calculator", icon: Monitor, color: "from-blue-500 to-blue-600" },
-      { name: "Image Editor", description: "Edit images with shapes, arrows, text, and free drawing tools", path: "/image-editor", icon: Image, color: "from-purple-500 to-purple-600" }
+      { name: "Image Editor", description: "Edit images with shapes, arrows, text, and free drawing tools", path: "/image-editor", icon: Image, color: "from-purple-500 to-purple-600" },
+      { name: "Image Resizer", description: "Resize and optimize images for different devices and platforms", path: "/image-resizer", icon: Image, color: "from-purple-500 to-purple-600" }
     ]
   },
   {
@@ -135,6 +131,21 @@ const categorizedTools = [
       { name: "Cron Job Generator", description: "Generate cron job expressions", path: "/cron-job-generator", icon: Clock, color: "from-indigo-500 to-indigo-600" },
       { name: "Date Difference Calculator", description: "Calculate the difference between two dates in days, weeks, and months", path: "/date-difference-calculator", icon: Clock, color: "from-indigo-500 to-indigo-600" },
       { name: "Cron Expression Visualizer", description: "Visualize cron expressions and see upcoming execution times", path: "/cron-expression-visualizer", icon: Clock, color: "from-indigo-500 to-indigo-600" }
+    ]
+  },
+  {
+    category: "CSS Generators",
+    items: [
+      { name: "Layout Grid Generator", description: "Generate CSS grid layouts with customizable parameters", path: "/layout-grid-generator", icon: SquareStack, color: "from-purple-500 to-purple-600" },
+      { name: "CSS Gradient Generator", description: "Create beautiful CSS gradients with a visual editor", path: "/css-gradient-generator", icon: Paintbrush, color: "from-pink-500 to-pink-600" },
+      { name: "Box Shadow Generator", description: "Generate CSS box shadows with a visual editor", path: "/box-shadow-generator", icon: SquareStack, color: "from-purple-500 to-purple-600" },
+      { name: "CSS Unit Converter", description: "Convert between different CSS units (px, em, rem, etc.)", path: "/css-unit-converter", icon: Ruler, color: "from-yellow-500 to-yellow-600" },
+      { name: "Border Radius Generator", description: "Generate CSS border radius with a visual editor", path: "/border-radius-generator", icon: SquareStack, color: "from-purple-500 to-purple-600" },
+      { name: "SVG Cleaner", description: "Clean and optimize SVG code", path: "/svg-cleaner", icon: Wand2, color: "from-teal-500 to-teal-600" },
+      { name: "Custom Scrollbar Generator", description: "Generate custom CSS scrollbar styles", path: "/scrollbar-generator", icon: SquareStack, color: "from-purple-500 to-purple-600" },
+      { name: "CSS Button Generator", description: "Generate beautiful CSS button styles", path: "/button-generator", icon: SquareStack, color: "from-purple-500 to-purple-600" },
+      { name: "CSS Loader Generator", description: "Generate CSS loading animations", path: "/loader-generator", icon: SquareStack, color: "from-purple-500 to-purple-600" },
+      { name: "Accordion/Toggle Generator", description: "Generate CSS accordion and toggle components", path: "/accordion-generator", icon: SquareStack, color: "from-purple-500 to-purple-600" }
     ]
   }
 ];

@@ -129,13 +129,26 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
       { name: "Color Converter", path: "/color-converter", icon: Palette },
       { name: "Color Picker", path: "/color-picker", icon: Palette },
       { name: "Color Name", path: "/color-name", icon: Eye },
+      
+      { name: "Color Blindness Simulator", path: "/color-blindness-simulator", icon: EyeOff },
+      { name: "Screen DPI Calculator", path: "/screen-dpi-calculator", icon: Monitor },
+      { name: "Image Editor", path: "/image-editor", icon: Image },
+      { name: "Image Resizer", path: "/image-resizer", icon: Image }
+    ]
+  },
+  {
+    category: "CSS Generators",
+    items: [
+      { name: "Layout Grid Generator", path: "/layout-grid-generator", icon: SquareStack },
       { name: "CSS Gradient Generator", path: "/css-gradient-generator", icon: Paintbrush },
       { name: "Box Shadow Generator", path: "/box-shadow-generator", icon: SquareStack },
       { name: "CSS Unit Converter", path: "/css-unit-converter", icon: Ruler },
+      { name: "Border Radius Generator", path: "/border-radius-generator", icon: SquareStack },
       { name: "SVG Cleaner", path: "/svg-cleaner", icon: Wand2 },
-      { name: "Color Blindness Simulator", path: "/color-blindness-simulator", icon: EyeOff },
-      { name: "Screen DPI Calculator", path: "/screen-dpi-calculator", icon: Monitor },
-      { name: "Image Editor", path: "/image-editor", icon: Image }
+      { name: "Custom Scrollbar Generator", path: "/scrollbar-generator", icon: SquareStack },
+      { name: "CSS Button Generator", path: "/button-generator", icon: SquareStack },
+      { name: "CSS Loader Generator", path: "/loader-generator", icon: SquareStack },
+      { name: "Accordion/Toggle Generator", path: "/accordion-generator", icon: SquareStack }
     ]
   },
   {

@@ -64,6 +64,13 @@ import WorkingDaysCalculatorPage from "@/pages/WorkingDaysCalculatorPage";
 import RatioCalculatorPage from "./pages/RatioCalculatorPage";
 import BigCommerceStatusPage from "./pages/BigCommerceStatusPage";
 import ShopifyStatusPage from "./pages/ShopifyStatusPage";
+import ImageResizerPage from "./pages/ImageResizer";
+import LayoutGridGeneratorPage from "./pages/LayoutGridGenerator";
+import BorderRadiusGeneratorPage from "./pages/BorderRadiusGenerator";
+import ScrollbarGenerator from "./pages/ScrollbarGenerator";
+import ButtonGenerator from "./pages/ButtonGenerator";
+import LoaderGenerator from "./pages/LoaderGenerator";
+import AccordionGenerator from "./pages/AccordionGenerator";
 
 const queryClient = new QueryClient();
 
@@ -139,6 +146,13 @@ const App = () => (
                     <Route path="/ratio-calculator" element={<RatioCalculatorPage />} />
                     <Route path="/bigcommerce-status" element={<BigCommerceStatusPage />} />
                     <Route path="/shopify-status" element={<ShopifyStatusPage />} />
+                    <Route path="/image-resizer" element={<ImageResizerPage />} />
+                    <Route path="/layout-grid-generator" element={<LayoutGridGeneratorPage />} />
+                    <Route path="/border-radius-generator" element={<BorderRadiusGeneratorPage />} />
+                    <Route path="/scrollbar-generator" element={<ScrollbarGenerator />} />
+                    <Route path="/button-generator" element={<ButtonGenerator />} />
+                    <Route path="/loader-generator" element={<LoaderGenerator />} />
+                    <Route path="/accordion-generator" element={<AccordionGenerator />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>
