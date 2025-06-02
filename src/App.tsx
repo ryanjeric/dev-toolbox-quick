@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -122,6 +123,7 @@ const App = () => (
                     <Route path="/color-blindness-simulator" element={<ColorBlindnessSimulatorPage />} />
                     <Route path="/json-validator" element={<JsonValidatorPage />} />
                     <Route path="/screen-dpi-calculator" element={<ScreenDpiCalculatorPage />} />
+                    <Route path="/image-converter" element={<ImageConverterPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>
