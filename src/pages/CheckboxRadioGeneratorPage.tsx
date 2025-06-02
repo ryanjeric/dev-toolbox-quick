@@ -319,7 +319,7 @@ ${baseStyles.trim()}
             {/* Preview */}
             <div>
               <Label>Preview</Label>
-              <div className="mt-2 p-4 border rounded-md flex items-center justify-center bg-white" style={{ minHeight: '80px' }}>
+              <div className="mt-2 p-4 border rounded-md flex items-center justify-center bg-muted" style={{ minHeight: '80px' }}>
                  {renderPreview()}
               </div>
             </div>
@@ -332,7 +332,7 @@ ${baseStyles.trim()}
                   id="generatedCode"
                   readOnly
                   value={generateCode()}
-                  className="w-full p-2 border rounded-md font-mono text-sm bg-slate-100"
+                  className="w-full p-2 border rounded-md font-mono text-sm bg-muted"
                   rows={10}
                 />
                 <Button 

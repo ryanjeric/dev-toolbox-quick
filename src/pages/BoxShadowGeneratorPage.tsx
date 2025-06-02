@@ -177,7 +177,7 @@ const BoxShadowGeneratorPage = () => {
                  {/* Preview */}
                  <div className="space-y-2">
                     <Label>Preview</Label>
-                    <div className="w-full h-48 bg-gray-100 rounded-md flex items-center justify-center p-4">
+                    <div className="w-full h-48 bg-muted rounded-md flex items-center justify-center p-4">
                        <div
                          className="w-32 h-32 bg-blue-500 rounded-md"
                          style={{ boxShadow: boxShadowCss }}
@@ -197,7 +197,7 @@ const BoxShadowGeneratorPage = () => {
                        id="css-output"
                        value={`box-shadow: ${boxShadowCss};`}
                        readOnly
-                       className="min-h-[100px] font-mono text-sm"
+                       className="min-h-[100px] font-mono text-sm bg-muted"
                     />
                  </div>
               </div>

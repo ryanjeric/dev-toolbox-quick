@@ -118,7 +118,7 @@ const ColorPickerPage = () => {
                   id="hexInput"
                   readOnly
                   value={hexColor}
-                  className="font-mono text-sm bg-slate-100 pr-12"
+                  className="font-mono text-sm bg-muted pr-12"
                 />
                 <Button 
                   size="sm" 
@@ -138,7 +138,7 @@ const ColorPickerPage = () => {
                   id="rgbInput"
                   readOnly
                   value={rgbColor || 'Invalid HEX'}
-                  className="font-mono text-sm bg-slate-100 pr-12"
+                  className="font-mono text-sm bg-muted pr-12"
                 />
                 <Button 
                   size="sm" 
@@ -159,7 +159,7 @@ const ColorPickerPage = () => {
                   id="hslInput"
                   readOnly
                   value={hslColor || 'Invalid HEX'}
-                  className="font-mono text-sm bg-slate-100 pr-12"
+                  className="font-mono text-sm bg-muted pr-12"
                 />
                 <Button 
                   size="sm" 

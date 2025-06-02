@@ -82,7 +82,7 @@ const CssFormatterPage = () => {
                 readOnly
                 value={formattedCssOutput}
                 rows={15}
-                className="font-mono text-sm bg-slate-100 pr-12"
+                className="font-mono text-sm bg-muted pr-12"
               />
               <Button 
                 size="sm" 

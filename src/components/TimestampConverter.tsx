@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Copy, Calendar, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -123,7 +122,7 @@ const TimestampConverter = () => {
                 <Input
                   value={humanDate}
                   readOnly
-                  className="font-mono text-sm bg-slate-50"
+                  className="font-mono text-sm bg-muted"
                 />
               </div>
             )}
@@ -159,14 +158,14 @@ const TimestampConverter = () => {
                 <Input
                   value={unixOutput}
                   readOnly
-                  className="font-mono text-sm bg-slate-50"
+                  className="font-mono text-sm bg-muted"
                 />
               </div>
             )}
           </TabsContent>
         </Tabs>
 
-        <div className="text-xs text-slate-500 bg-slate-50 p-3 rounded mt-4">
+        <div className="text-xs text-muted-foreground bg-muted p-3 rounded mt-4">
           <strong>Formats:</strong> UNIX timestamps, ISO 8601, or human readable dates like "Jan 1, 2024"
         </div>
       </CardContent>

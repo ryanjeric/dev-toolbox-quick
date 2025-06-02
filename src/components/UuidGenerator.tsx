@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Copy, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -42,7 +41,7 @@ const UuidGenerator = () => {
             <Input
               value={uuid}
               readOnly
-              className="font-mono text-sm bg-slate-50"
+              className="font-mono text-sm bg-muted"
             />
             <Button
               size="sm"
@@ -64,7 +63,7 @@ const UuidGenerator = () => {
           Generate New UUID
         </Button>
 
-        <div className="text-xs text-slate-500 bg-slate-50 p-3 rounded">
+        <div className="text-xs text-muted-foreground bg-muted p-3 rounded">
           <strong>Use cases:</strong> Database IDs, API keys, session tokens, unique identifiers
         </div>
       </CardContent>

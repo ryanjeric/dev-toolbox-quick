@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from "react-router-dom";
 import { 
   FileJson, 
@@ -8,7 +7,8 @@ import {
   Hash,
   Clock,
   Type,
-  Home
+  Home,
+  Image
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -21,6 +21,7 @@ const navigationItems = [
   { name: "UUID", path: "/uuid", icon: Hash },
   { name: "Timestamp", path: "/timestamp", icon: Clock },
   { name: "Text Case", path: "/text-case", icon: Type },
+  { name: "Image Editor", path: "/image-editor", icon: Image },
 ];
 
 const Navigation = () => {

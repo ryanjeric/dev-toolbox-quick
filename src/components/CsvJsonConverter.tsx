@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -116,7 +115,7 @@ const CsvJsonConverter = () => {
                 <Textarea
                   value={jsonOutput}
                   readOnly
-                  className="font-mono text-sm bg-slate-50"
+                  className="font-mono text-sm bg-muted"
                   rows={6}
                 />
               </div>

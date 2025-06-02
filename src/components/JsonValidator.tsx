@@ -113,15 +113,15 @@ export function JsonValidator() {
               id="formattedJson"
               value={formattedJson}
               readOnly
-              className="min-h-[200px] font-mono text-sm mt-1 bg-slate-50"
+              className="min-h-[200px] font-mono text-sm mt-1 bg-muted"
             />
           </div>
         )}
 
         {/* Features List */}
-        <div className="bg-slate-50 p-4 rounded-lg">
+        <div className="bg-muted p-4 rounded-lg">
           <h3 className="font-medium mb-2">Features:</h3>
-          <ul className="text-sm space-y-1 list-disc list-inside">
+          <ul className="text-sm space-y-1 list-disc list-inside text-muted-foreground">
             <li>Validates JSON syntax</li>
             <li>Formats JSON with proper indentation</li>
             <li>Highlights syntax errors with line numbers</li>

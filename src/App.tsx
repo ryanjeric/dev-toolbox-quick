@@ -32,6 +32,7 @@ import CssUnitConverterPage from "./pages/CssUnitConverterPage";
 import Base64FileConverterPage from "./pages/Base64FileConverterPage";
 import Base64Page from "./pages/Base64Page";
 import CronJobGeneratorPage from "./pages/CronJobGeneratorPage";
+import PostcodeLookupPage from "./pages/PostcodeLookupPage";
 import CheckboxRadioGeneratorPage from "./pages/CheckboxRadioGeneratorPage";
 import CsvTableViewerPage from "./pages/CsvTableViewerPage";
 import LoremIpsumGeneratorPage from "./pages/LoremIpsumGeneratorPage";
@@ -57,6 +58,12 @@ import JsonValidatorPage from "./pages/JsonValidatorPage";
 import ScreenDpiCalculatorPage from "./pages/ScreenDpiCalculatorPage";
 import ImageConverterPage from "./pages/ImageConverterPage";
 import CalculatorPage from "./pages/CalculatorPage";
+import TextReplacerPage from "@/pages/TextReplacerPage";
+import ImageEditorPage from "@/pages/ImageEditorPage";
+import WorkingDaysCalculatorPage from "@/pages/WorkingDaysCalculatorPage";
+import RatioCalculatorPage from "./pages/RatioCalculatorPage";
+import BigCommerceStatusPage from "./pages/BigCommerceStatusPage";
+import ShopifyStatusPage from "./pages/ShopifyStatusPage";
 
 const queryClient = new QueryClient();
 
@@ -101,6 +108,7 @@ const App = () => (
                     <Route path="/base64-file-converter" element={<Base64FileConverterPage />} />
                     <Route path="/base64" element={<Base64Page />} />
                     <Route path="/cron-job-generator" element={<CronJobGeneratorPage />} />
+                    <Route path="/postcode-lookup" element={<PostcodeLookupPage />} />
                     <Route path="/checkbox-radio-generator" element={<CheckboxRadioGeneratorPage />} />
                     <Route path="/csv-table-viewer" element={<CsvTableViewerPage />} />
                     <Route path="/lorem-ipsum-generator" element={<LoremIpsumGeneratorPage />} />
@@ -125,6 +133,12 @@ const App = () => (
                     <Route path="/screen-dpi-calculator" element={<ScreenDpiCalculatorPage />} />
                     <Route path="/image-converter" element={<ImageConverterPage />} />
                     <Route path="/calculator" element={<CalculatorPage />} />
+                    <Route path="/text-replacer" element={<TextReplacerPage />} />
+                    <Route path="/image-editor" element={<ImageEditorPage />} />
+                    <Route path="/working-days-calculator" element={<WorkingDaysCalculatorPage />} />
+                    <Route path="/ratio-calculator" element={<RatioCalculatorPage />} />
+                    <Route path="/bigcommerce-status" element={<BigCommerceStatusPage />} />
+                    <Route path="/shopify-status" element={<ShopifyStatusPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>

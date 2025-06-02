@@ -254,7 +254,7 @@ export function ScreenDpiCalculator() {
         )}
 
         {/* Information */}
-        <div className="bg-slate-50 p-4 rounded-lg">
+        <div className="bg-muted p-4 rounded-lg">
           <h3 className="font-medium mb-2">About DPI/PPI</h3>
           <ul className="text-sm space-y-1 list-disc list-inside">
             <li>PPI (Pixels Per Inch) measures screen resolution density</li>

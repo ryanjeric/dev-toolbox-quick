@@ -80,7 +80,7 @@ export function TabSpaceConverter() {
             readOnly
             rows={10}
             placeholder="Converted text will appear here..."
-            className="mt-1 dark:bg-slate-900 dark:border-slate-700 dark:text-slate-50"
+            className="mt-1 bg-muted"
           />
         </div>
       </CardContent>

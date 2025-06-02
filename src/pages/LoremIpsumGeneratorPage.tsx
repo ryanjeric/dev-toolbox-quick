@@ -171,7 +171,7 @@ const LoremIpsumGeneratorPage = () => {
                   readOnly
                   value={generatedText}
                   rows={15}
-                  className="font-mono text-sm bg-slate-100"
+                  className="font-mono text-sm bg-muted"
                 />
                 <Button 
                   size="sm" 

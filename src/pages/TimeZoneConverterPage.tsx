@@ -150,7 +150,7 @@ const TimeZoneConverterPage = () => {
                 <Input
                   readOnly
                   value={convertedDateTime}
-                  className="bg-slate-100 pr-12"
+                  className="bg-muted pr-12"
                 />
                 <Button 
                   size="sm" 

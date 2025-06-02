@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -232,7 +231,7 @@ const ColorConverter = () => {
           </div>
 
           {/* Format Examples */}
-          <div className="bg-gray-50 p-4 rounded-md space-y-2">
+          <div className="bg-muted p-4 rounded-md space-y-2">
             <h4 className="font-medium text-sm">Format Examples:</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-sm font-mono">
               <div>HEX: {hex}</div>

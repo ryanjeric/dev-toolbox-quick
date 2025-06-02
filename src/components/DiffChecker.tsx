@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -40,15 +39,15 @@ const DiffChecker = () => {
 
   const renderDiffLine = (line: string, index: number, hasChange: boolean, side: 'left' | 'right') => {
     const bgColor = hasChange 
-      ? (side === 'left' ? 'bg-red-50 border-l-2 border-red-300' : 'bg-green-50 border-l-2 border-green-300')
-      : 'bg-gray-50';
+      ? (side === 'left' ? 'bg-red-950/50 border-l-2 border-red-500' : 'bg-green-950/50 border-l-2 border-green-500')
+      : 'bg-muted';
     
     return (
       <div
         key={index}
         className={`px-3 py-1 font-mono text-sm ${bgColor} min-h-[1.5rem] flex items-center`}
       >
-        <span className="text-gray-400 w-8 text-xs mr-3 select-none">{index + 1}</span>
+        <span className="text-muted-foreground w-8 text-xs mr-3 select-none">{index + 1}</span>
         <span className="whitespace-pre-wrap break-all">{line || ' '}</span>
       </div>
     );
@@ -106,23 +105,23 @@ const DiffChecker = () => {
               {/* Legend */}
               <div className="flex gap-4 text-sm">
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-red-50 border-l-2 border-red-300"></div>
+                  <div className="w-4 h-4 bg-red-950/50 border-l-2 border-red-500"></div>
                   <span>Removed/Changed</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-green-50 border-l-2 border-green-300"></div>
+                  <div className="w-4 h-4 bg-green-950/50 border-l-2 border-green-500"></div>
                   <span>Added/Changed</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-gray-50"></div>
+                  <div className="w-4 h-4 bg-muted"></div>
                   <span>Unchanged</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 border rounded-lg overflow-hidden">
                 {/* Left Side */}
-                <div className="border-r border-gray-200">
-                  <div className="bg-gray-100 px-3 py-2 text-sm font-medium border-b">
+                <div className="border-r">
+                  <div className="bg-muted px-3 py-2 text-sm font-medium border-b">
                     Original
                   </div>
                   <div className="max-h-[400px] overflow-y-auto">
@@ -134,7 +133,7 @@ const DiffChecker = () => {
 
                 {/* Right Side */}
                 <div>
-                  <div className="bg-gray-100 px-3 py-2 text-sm font-medium border-b">
+                  <div className="bg-muted px-3 py-2 text-sm font-medium border-b">
                     Modified
                   </div>
                   <div className="max-h-[400px] overflow-y-auto">
@@ -146,7 +145,7 @@ const DiffChecker = () => {
               </div>
 
               {/* Statistics */}
-              <div className="bg-gray-50 p-3 rounded-md">
+              <div className="bg-muted p-3 rounded-md">
                 <div className="grid grid-cols-3 gap-4 text-sm">
                   <div>
                     <span className="font-medium">Total lines: </span>

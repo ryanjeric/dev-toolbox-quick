@@ -131,7 +131,7 @@ const HttpStatusCodeExplainerPage = () => {
           {explanation && (
             <div className="mt-4">
               <Label>Explanation:</Label>
-              <div className="bg-slate-100 p-3 rounded-md mt-1">
+              <div className="bg-muted p-3 rounded-md mt-1">
                 {explanation}
               </div>
             </div>

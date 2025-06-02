@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Copy, Type } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -91,11 +90,11 @@ const TextCaseConverter = () => {
                 <label className="text-sm font-medium block">Converted formats:</label>
                 {cases.map((caseItem, index) => (
                   <div key={index} className="flex items-center gap-2">
-                    <div className="w-24 text-xs font-medium text-slate-600">
+                    <div className="w-24 text-xs font-medium text-muted-foreground">
                       {caseItem.label}:
                     </div>
                     <div className="flex-1 flex items-center gap-2">
-                      <code className="flex-1 px-2 py-1 bg-slate-50 rounded text-sm font-mono">
+                      <code className="flex-1 px-2 py-1 bg-muted rounded text-sm font-mono">
                         {caseItem.value}
                       </code>
                       <Button
@@ -114,7 +113,7 @@ const TextCaseConverter = () => {
           </TabsContent>
         </Tabs>
 
-        <div className="text-xs text-slate-500 bg-slate-50 p-3 rounded mt-4">
+        <div className="text-xs text-muted-foreground bg-muted p-3 rounded mt-4">
           <strong>Use cases:</strong> Variable naming, API endpoints, file naming conventions
         </div>
       </CardContent>

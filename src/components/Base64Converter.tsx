@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -125,7 +124,7 @@ const Base64Converter = () => {
                 <Textarea
                   value={decodeOutput}
                   readOnly
-                  className="font-mono text-sm bg-slate-50"
+                  className="font-mono text-sm bg-muted"
                   rows={3}
                 />
               </div>
