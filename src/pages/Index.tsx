@@ -30,7 +30,8 @@ import {
   Wrench,
   ArrowUpWideNarrow,
   EyeOff,
-  Monitor
+  Monitor,
+  Image
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -66,7 +67,8 @@ const categorizedTools = [
       { name: "CSV Table Viewer", description: "View CSV data as a formatted table", path: "/csv-table-viewer", icon: Table, color: "from-green-500 to-green-600" },
       { name: "Base64", description: "Encode and decode Base64 strings", path: "/base64", icon: FileKey, color: "from-red-500 to-red-600" },
       { name: "Base64 File Converter", description: "Encode and decode files to and from Base64", path: "/base64-file-converter", icon: FileKey, color: "from-red-500 to-red-600" },
-      { name: "JSON Validator", description: "Validate and format JSON with detailed error messages", path: "/json-validator", icon: FileJson, color: "from-blue-500 to-blue-600" }
+      { name: "JSON Validator", description: "Validate and format JSON with detailed error messages", path: "/json-validator", icon: FileJson, color: "from-blue-500 to-blue-600" },
+      { name: "Image Converter", description: "Convert images between different formats (JPEG, PNG, WebP)", path: "/image-converter", icon: Image, color: "from-purple-500 to-purple-600" },
     ]
   },
   {

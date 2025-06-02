@@ -28,7 +28,8 @@ import {
   Smartphone,
   ArrowUpWideNarrow,
   EyeOff,
-  Monitor
+  Monitor,
+  Image
 } from "lucide-react";
 import {
   Sidebar,
@@ -77,6 +78,7 @@ const categorizedNavigationItems = [
       { name: "Base64", path: "/base64", icon: FileKey },
       { name: "Base64 File Converter", path: "/base64-file-converter", icon: FileKey },
       { name: "JSON Validator", path: "/json-validator", icon: FileJson },
+      { name: "Image Converter", path: "/image-converter", icon: Image },
     ]
   },
   {

@@ -55,6 +55,7 @@ import SvgCleanerPage from "./pages/SvgCleanerPage";
 import ColorBlindnessSimulatorPage from "./pages/ColorBlindnessSimulatorPage";
 import JsonValidatorPage from "./pages/JsonValidatorPage";
 import ScreenDpiCalculatorPage from "./pages/ScreenDpiCalculatorPage";
+import ImageConverterPage from "./pages/ImageConverterPage";
 
 const queryClient = new QueryClient();
 
