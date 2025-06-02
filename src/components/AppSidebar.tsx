@@ -71,7 +71,7 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
     items: [
       { name: "Basic Calculator", path: "/calculator", icon: Calculator },
       { name: "Percent-off Calculator", path: "/percent-off-calculator", icon: Percent },
-      { name: "Basic Percentage Calculator", path: "//percentage-calculator", icon: Code },
+      { name: "Basic Percentage Calculator", path: "/percentage-calculator", icon: Code },
       { name: "Unit Converter", path: "/unit-converter", icon: Ruler },
       { name: "Working Days Calculator", path: "/working-days-calculator", icon: Calculator },
       { name: "Ratio Calculator", path: "/ratio-calculator", icon: Calculator }
