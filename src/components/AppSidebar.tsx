@@ -120,7 +120,8 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
       { name: "HTTP Status Code Explainer", path: "/http-status-code-explainer", icon: Info },
       { name: "Responsive Image Tester", path: "/responsive-image-tester", icon: Smartphone },
       { name: "BigCommerce Status", path: "/bigcommerce-status", icon: Globe },
-      { name: "Shopify Status", path: "/shopify-status", icon: Globe }
+      { name: "Shopify Status", path: "/shopify-status", icon: Globe },
+      { name: "Responsive Tester", path: "/responsive-tester", icon: Smartphone }
     ]
   },
   {
