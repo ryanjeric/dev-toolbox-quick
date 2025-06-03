@@ -71,6 +71,7 @@ import ScrollbarGenerator from "./pages/ScrollbarGenerator";
 import ButtonGenerator from "./pages/ButtonGenerator";
 import LoaderGenerator from "./pages/LoaderGenerator";
 import AccordionGenerator from "./pages/AccordionGenerator";
+import SkeletonLoaderGeneratorPage from "./pages/SkeletonLoaderGeneratorPage";
 
 const queryClient = new QueryClient();
 
@@ -153,6 +154,7 @@ const App = () => (
                     <Route path="/button-generator" element={<ButtonGenerator />} />
                     <Route path="/loader-generator" element={<LoaderGenerator />} />
                     <Route path="/accordion-generator" element={<AccordionGenerator />} />
+                    <Route path="/skeleton-loader-generator" element={<SkeletonLoaderGeneratorPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>

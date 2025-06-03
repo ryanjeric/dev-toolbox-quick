@@ -148,7 +148,8 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
       { name: "Custom Scrollbar Generator", path: "/scrollbar-generator", icon: SquareStack },
       { name: "CSS Button Generator", path: "/button-generator", icon: SquareStack },
       { name: "CSS Loader Generator", path: "/loader-generator", icon: SquareStack },
-      { name: "Accordion/Toggle Generator", path: "/accordion-generator", icon: SquareStack }
+      { name: "Accordion/Toggle Generator", path: "/accordion-generator", icon: SquareStack },
+      { name: "Skeleton Loader Generator", path: "/skeleton-loader-generator", icon: SquareStack }
     ]
   },
   {

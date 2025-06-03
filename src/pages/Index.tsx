@@ -145,7 +145,8 @@ const categorizedTools = [
       { name: "Custom Scrollbar Generator", description: "Generate custom CSS scrollbar styles", path: "/scrollbar-generator", icon: SquareStack, color: "from-purple-500 to-purple-600" },
       { name: "CSS Button Generator", description: "Generate beautiful CSS button styles", path: "/button-generator", icon: SquareStack, color: "from-purple-500 to-purple-600" },
       { name: "CSS Loader Generator", description: "Generate CSS loading animations", path: "/loader-generator", icon: SquareStack, color: "from-purple-500 to-purple-600" },
-      { name: "Accordion/Toggle Generator", description: "Generate CSS accordion and toggle components", path: "/accordion-generator", icon: SquareStack, color: "from-purple-500 to-purple-600" }
+      { name: "Accordion/Toggle Generator", description: "Generate CSS accordion and toggle components", path: "/accordion-generator", icon: SquareStack, color: "from-purple-500 to-purple-600" },
+      { name: "Skeleton Loader Generator", description: "Generate skeleton loading components for cards, lists, etc.", path: "/skeleton-loader-generator", icon: SquareStack, color: "from-purple-500 to-purple-600" }
     ]
   }
 ];
