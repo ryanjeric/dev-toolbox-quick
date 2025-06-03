@@ -250,7 +250,7 @@ export function AppSidebar() {
         <div className={`flex items-center px-2 py-2 ${state === 'collapsed' ? 'justify-center' : 'justify-between'}`}>
           {state === 'expanded' && (
             <NavLink to="/" className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Dev Toolbox
+              Web-Toolbox
             </NavLink>
           )}
           <SidebarTrigger />

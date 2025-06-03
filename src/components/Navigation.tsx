@@ -32,7 +32,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Dev Toolbox
+            Web-Toolbox
           </Link>
           
           <div className="hidden md:flex space-x-1">
