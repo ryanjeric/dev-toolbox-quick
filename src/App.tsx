@@ -75,6 +75,7 @@ import SkeletonLoaderGeneratorPage from "./pages/SkeletonLoaderGeneratorPage";
 import ResponsiveTesterPage from "./pages/ResponsiveTesterPage";
 import TodoListPage from "./pages/TodoListPage";
 import BreathingExerciseTimerPage from "./pages/BreathingExerciseTimerPage";
+import DigitalZenGardenPage from "./pages/DigitalZenGardenPage";
 
 const queryClient = new QueryClient();
 
@@ -96,6 +97,7 @@ const App = () => (
                   <Routes>
                     <Route path="/" element={<Index />} />
                     <Route path="/breathing-exercise-timer" element={<BreathingExerciseTimerPage />} />
+                    <Route path="/digital-zen-garden" element={<DigitalZenGardenPage />} />
                     <Route path="/json" element={<JsonPage />} />
                     <Route path="/csv-json" element={<CsvJsonPage />} />
                     <Route path="/url" element={<UrlPage />} />

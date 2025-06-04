@@ -35,6 +35,7 @@ import {
   MapPin,
   ListTodo,
   Timer,
+  TreePine,
   LucideIcon
 } from "lucide-react";
 import {
@@ -73,6 +74,7 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
     category: "Stress Reliever Tools",
     items: [
       { name: "Breathing Exercise Timer", path: "/breathing-exercise-timer", icon: Timer },
+      { name: "Digital Zen Garden", path: "/digital-zen-garden", icon: TreePine },
     ]
   },
   {
@@ -220,7 +222,8 @@ const iconMap: { [key: string]: LucideIcon } = {
   Star,
   MapPin,
   ListTodo,
-  Timer
+  Timer,
+  TreePine
 };
 
 export function AppSidebar() {
