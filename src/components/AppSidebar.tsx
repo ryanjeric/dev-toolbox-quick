@@ -33,6 +33,7 @@ import {
   Replace,
   Star,
   MapPin,
+  ListTodo,
   LucideIcon
 } from "lucide-react";
 import {
@@ -64,6 +65,7 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
     category: "General",
     items: [
       { name: "Home", path: "/", icon: Home },
+      { name: "Todo List", path: "/todo-list", icon: ListTodo },
     ]
   },
   {
@@ -209,7 +211,8 @@ const iconMap: { [key: string]: LucideIcon } = {
   Image,
   Replace,
   Star,
-  MapPin
+  MapPin,
+  ListTodo
 };
 
 export function AppSidebar() {

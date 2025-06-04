@@ -73,6 +73,7 @@ import LoaderGenerator from "./pages/LoaderGenerator";
 import AccordionGenerator from "./pages/AccordionGenerator";
 import SkeletonLoaderGeneratorPage from "./pages/SkeletonLoaderGeneratorPage";
 import ResponsiveTesterPage from "./pages/ResponsiveTesterPage";
+import TodoListPage from "./pages/TodoListPage";
 
 const queryClient = new QueryClient();
 
@@ -157,6 +158,7 @@ const App = () => (
                     <Route path="/accordion-generator" element={<AccordionGenerator />} />
                     <Route path="/skeleton-loader-generator" element={<SkeletonLoaderGeneratorPage />} />
                     <Route path="/responsive-tester" element={<ResponsiveTesterPage />} />
+                    <Route path="/todo-list" element={<TodoListPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>
