@@ -34,6 +34,7 @@ import {
   Star,
   MapPin,
   ListTodo,
+  Timer,
   LucideIcon
 } from "lucide-react";
 import {
@@ -66,6 +67,12 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
     items: [
       { name: "Home", path: "/", icon: Home },
       { name: "Todo List", path: "/todo-list", icon: ListTodo },
+    ]
+  },
+  {
+    category: "Stress Reliever Tools",
+    items: [
+      { name: "Breathing Exercise Timer", path: "/breathing-exercise-timer", icon: Timer },
     ]
   },
   {
@@ -212,7 +219,8 @@ const iconMap: { [key: string]: LucideIcon } = {
   Replace,
   Star,
   MapPin,
-  ListTodo
+  ListTodo,
+  Timer
 };
 
 export function AppSidebar() {

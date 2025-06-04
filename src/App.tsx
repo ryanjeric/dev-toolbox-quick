@@ -74,6 +74,7 @@ import AccordionGenerator from "./pages/AccordionGenerator";
 import SkeletonLoaderGeneratorPage from "./pages/SkeletonLoaderGeneratorPage";
 import ResponsiveTesterPage from "./pages/ResponsiveTesterPage";
 import TodoListPage from "./pages/TodoListPage";
+import BreathingExerciseTimerPage from "./pages/BreathingExerciseTimerPage";
 
 const queryClient = new QueryClient();
 
@@ -94,6 +95,7 @@ const App = () => (
                   </div>
                   <Routes>
                     <Route path="/" element={<Index />} />
+                    <Route path="/breathing-exercise-timer" element={<BreathingExerciseTimerPage />} />
                     <Route path="/json" element={<JsonPage />} />
                     <Route path="/csv-json" element={<CsvJsonPage />} />
                     <Route path="/url" element={<UrlPage />} />
