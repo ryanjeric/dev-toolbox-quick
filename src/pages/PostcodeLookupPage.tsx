@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -81,31 +82,44 @@ export default function PostcodeLookupPage() {
               />
             </div>
 
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Country</TableHead>
-                  <TableHead>State</TableHead>
-                  <TableHead>Region</TableHead>
-                  <TableHead>Postcode</TableHead>
-                  <TableHead>Locality</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {results.map((result, index) => (
-                  <TableRow key={index}>
-                    <TableCell>{result.country}</TableCell>
-                    <TableCell>{result.state}</TableCell>
-                    <TableCell>{result.region}</TableCell>
-                    <TableCell>{result.postcode}</TableCell>
-                    <TableCell>{result.locality}</TableCell>
+            {results.length > 0 ? (
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Country</TableHead>
+                    <TableHead>State</TableHead>
+                    <TableHead>Region</TableHead>
+                    <TableHead>Postcode</TableHead>
+                    <TableHead>Locality</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {results.map((result, index) => (
+                    <TableRow key={index}>
+                      <TableCell>{result.country}</TableCell>
+                      <TableCell>{result.state}</TableCell>
+                      <TableCell>{result.region}</TableCell>
+                      <TableCell className="font-mono">{result.postcode}</TableCell>
+                      <TableCell>{result.locality}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            ) : (
+              <div className="text-center text-slate-500 py-8">
+                {country && state === '' && region === '' && postcode === '' 
+                  ? 'Select a state, region, or enter a postcode to see results'
+                  : 'No postcodes found matching your criteria'
+                }
+              </div>
+            )}
+
+            <div className="mt-4 text-sm text-slate-500">
+              Showing {results.length} results
+            </div>
           </CardContent>
         </Card>
       </div>
     </div>
   );
-} 
+}
