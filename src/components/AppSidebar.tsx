@@ -36,6 +36,7 @@ import {
   ListTodo,
   Timer,
   TreePine,
+  CloudIcon,
   LucideIcon
 } from "lucide-react";
 import {
@@ -75,6 +76,7 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
     items: [
       { name: "Breathing Exercise Timer", path: "/breathing-exercise-timer", icon: Timer },
       { name: "Digital Zen Garden", path: "/digital-zen-garden", icon: TreePine },
+      { name: "Cloud Shape Generator", path: "/cloud-shape-generator", icon: CloudIcon },
     ]
   },
   {
@@ -223,7 +225,8 @@ const iconMap: { [key: string]: LucideIcon } = {
   MapPin,
   ListTodo,
   Timer,
-  TreePine
+  TreePine,
+  CloudIcon
 };
 
 export function AppSidebar() {

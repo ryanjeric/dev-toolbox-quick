@@ -76,6 +76,7 @@ import ResponsiveTesterPage from "./pages/ResponsiveTesterPage";
 import TodoListPage from "./pages/TodoListPage";
 import BreathingExerciseTimerPage from "./pages/BreathingExerciseTimerPage";
 import DigitalZenGardenPage from "./pages/DigitalZenGardenPage";
+import CloudShapeGeneratorPage from "./pages/CloudShapeGeneratorPage";
 
 const queryClient = new QueryClient();
 
@@ -98,6 +99,7 @@ const App = () => (
                     <Route path="/" element={<Index />} />
                     <Route path="/breathing-exercise-timer" element={<BreathingExerciseTimerPage />} />
                     <Route path="/digital-zen-garden" element={<DigitalZenGardenPage />} />
+                    <Route path="/cloud-shape-generator" element={<CloudShapeGeneratorPage />} />
                     <Route path="/json" element={<JsonPage />} />
                     <Route path="/csv-json" element={<CsvJsonPage />} />
                     <Route path="/url" element={<UrlPage />} />
