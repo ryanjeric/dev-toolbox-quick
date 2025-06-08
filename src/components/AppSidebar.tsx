@@ -37,7 +37,8 @@ import {
   Timer,
   TreePine,
   CloudIcon,
-  LucideIcon
+  LucideIcon,
+  Grid
 } from "lucide-react";
 import {
   Sidebar,
@@ -143,7 +144,6 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
       { name: "Color Converter", path: "/color-converter", icon: Palette },
       { name: "Color Picker", path: "/color-picker", icon: Palette },
       { name: "Color Name", path: "/color-name", icon: Eye },
-      
       { name: "Color Blindness Simulator", path: "/color-blindness-simulator", icon: EyeOff },
       { name: "Screen DPI Calculator", path: "/screen-dpi-calculator", icon: Monitor },
       { name: "Image Editor", path: "/image-editor", icon: Image },
@@ -226,38 +226,46 @@ const iconMap: { [key: string]: LucideIcon } = {
   ListTodo,
   Timer,
   TreePine,
-  CloudIcon
+  CloudIcon,
+  Grid
 };
 
 export function AppSidebar() {
   const location = useLocation();
   const { state } = useSidebar();
   const [searchTerm, setSearchTerm] = useState('');
-  const { favorites, addFavorite, removeFavorite, isFavorite } = useFavorites();
+  const { favorites, addFavorite, removeFavorite, isFavorite, showOnlyFavorites } = useFavorites();
 
   const filteredNavigationItems = useMemo(() => {
-    if (!searchTerm) {
-      return categorizedNavigationItems;
+    let items = categorizedNavigationItems;
+
+    // If showOnlyFavorites is true, only show items that are in favorites
+    if (showOnlyFavorites) {
+      return [{
+        category: "Favorites",
+        items: favorites
+      }];
     }
 
-    const lowerCaseSearchTerm = searchTerm.toLowerCase();
+    // Otherwise, show all items with search filtering if needed
+    if (searchTerm) {
+      const lowerCaseSearchTerm = searchTerm.toLowerCase();
+      items = items.map(categoryGroup => ({
+        ...categoryGroup,
+        items: categoryGroup.items.filter(item => 
+          item.name.toLowerCase().includes(lowerCaseSearchTerm)
+        )
+      })).filter(categoryGroup => categoryGroup.items.length > 0);
+    }
 
-    return categorizedNavigationItems.map(categoryGroup => ({
-      ...categoryGroup,
-      items: categoryGroup.items.filter(item => 
-        item.name.toLowerCase().includes(lowerCaseSearchTerm)
-      )
-    })).filter(categoryGroup => categoryGroup.items.length > 0);
-  }, [searchTerm]);
+    return items;
+  }, [searchTerm, showOnlyFavorites, favorites]);
 
-  const handleFavoriteClick = (item: { name: string; path: string; icon?: LucideIcon, iconName?: string }) => {
+  const handleFavoriteClick = (item: { name: string; path: string; icon?: LucideIcon }) => {
     if (isFavorite(item.path)) {
       removeFavorite(item.path);
     } else {
-      const navItem = categorizedNavigationItems.flatMap(cat => cat.items).find(nav => nav.path === item.path);
-      if (navItem) {
-        addFavorite(navItem as any);
-      }
+      addFavorite(item);
     }
   };
 
@@ -272,7 +280,7 @@ export function AppSidebar() {
           )}
           <SidebarTrigger />
         </div>
-         {state === 'expanded' && (
+        {state === 'expanded' && (
           <div className="px-2 pb-2">
             <Input 
               placeholder="Quick search..."
@@ -286,7 +294,7 @@ export function AppSidebar() {
 
       {state === 'expanded' && (
         <SidebarContent className="flex-1 overflow-y-auto">
-          {favorites.length > 0 && (
+          {!showOnlyFavorites && favorites.length > 0 && (
             <SidebarGroup>
               <SidebarGroupLabel>Favorites</SidebarGroupLabel>
               <SidebarGroupContent>

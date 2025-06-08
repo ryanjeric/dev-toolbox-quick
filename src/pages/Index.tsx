@@ -35,7 +35,12 @@ import {
   Replace,
   Star,
   MapPin,
-  LucideIcon
+  LucideIcon,
+  ListTodo,
+  Timer,
+  TreePine,
+  CloudIcon,
+  Apple
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -43,6 +48,21 @@ import { useState, useMemo } from 'react';
 import { useFavorites } from "@/hooks/useFavorites";
 
 const categorizedTools = [
+  {
+    category: "General",
+    items: [
+      { name: "Home", description: "Return to the homepage", path: "/", icon: Home, color: "from-blue-500 to-blue-600" },
+      { name: "Todo List", description: "Manage your tasks and to-dos", path: "/todo-list", icon: ListTodo, color: "from-green-500 to-green-600" },
+    ]
+  },
+  {
+    category: "Stress Reliever Tools",
+    items: [
+      { name: "Breathing Exercise Timer", description: "Guided breathing exercises with customizable timers", path: "/breathing-exercise-timer", icon: Timer, color: "from-blue-500 to-blue-600" },
+      { name: "Digital Zen Garden", description: "Create and maintain a peaceful digital garden", path: "/digital-zen-garden", icon: TreePine, color: "from-green-500 to-green-600" },
+      { name: "Cloud Shape Generator", description: "Generate and watch calming cloud shapes", path: "/cloud-shape-generator", icon: CloudIcon, color: "from-sky-500 to-sky-600" },
+    ]
+  },
   {
     category: "Calculators",
     items: [
@@ -216,7 +236,7 @@ const Index = () => {
         ...fav, 
         description: "", 
         color: "from-gray-500 to-gray-600",
-        icon: iconMap[fav.iconName] || Home
+        icon: fav.icon || Home
       };
     });
   }, [favorites]);

@@ -1,47 +1,53 @@
 import { useState, useEffect } from 'react';
 import { LucideIcon } from 'lucide-react';
 
-interface FavoriteItem {
+export interface FavoriteItem {
   name: string;
   path: string;
-  iconName: string;
+  icon?: any;
 }
 
-export function useFavorites() {
+export const useFavorites = () => {
   const [favorites, setFavorites] = useState<FavoriteItem[]>(() => {
-    const savedFavorites = localStorage.getItem('favorites');
-    return savedFavorites ? JSON.parse(savedFavorites) : [];
+    const saved = localStorage.getItem('favorites');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const [showOnlyFavorites, setShowOnlyFavorites] = useState(() => {
+    const saved = localStorage.getItem('showOnlyFavorites');
+    return saved ? JSON.parse(saved) : false;
   });
 
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  const addFavorite = (item: { name: string; path: string; icon: LucideIcon }) => {
-    setFavorites(prev => {
-      if (!prev.some(fav => fav.path === item.path)) {
-        return [...prev, {
-          name: item.name,
-          path: item.path,
-          iconName: item.icon.name
-        }];
-      }
-      return prev;
-    });
+  useEffect(() => {
+    localStorage.setItem('showOnlyFavorites', JSON.stringify(showOnlyFavorites));
+  }, [showOnlyFavorites]);
+
+  const addFavorite = (item: FavoriteItem) => {
+    setFavorites((prev) => [...prev, item]);
   };
 
   const removeFavorite = (path: string) => {
-    setFavorites(prev => prev.filter(item => item.path !== path));
+    setFavorites((prev) => prev.filter((item) => item.path !== path));
   };
 
   const isFavorite = (path: string) => {
-    return favorites.some(item => item.path === path);
+    return favorites.some((item) => item.path === path);
+  };
+
+  const toggleFavoritesOnly = () => {
+    setShowOnlyFavorites((prev) => !prev);
   };
 
   return {
     favorites,
+    showOnlyFavorites,
     addFavorite,
     removeFavorite,
-    isFavorite
+    isFavorite,
+    toggleFavoritesOnly,
   };
-} 
+}; 
