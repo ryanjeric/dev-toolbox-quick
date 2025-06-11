@@ -125,12 +125,20 @@ const ColorConverter = () => {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          {/* Color Preview */}
+          {/* Color Preview and Picker */}
           <div className="flex items-center gap-4">
-            <div 
-              className="w-24 h-24 rounded-lg border border-gray-300 shadow-sm"
-              style={{ backgroundColor: hex }}
-            />
+            <div className="space-y-2">
+              <div 
+                className="w-24 h-24 rounded-lg border border-gray-300 shadow-sm"
+                style={{ backgroundColor: hex }}
+              />
+              <Input
+                type="color"
+                value={hex}
+                onChange={(e) => updateFromHex(e.target.value)}
+                className="w-full h-10 p-1 cursor-pointer"
+              />
+            </div>
             <div>
               <h3 className="font-medium text-lg">Color Preview</h3>
               <p className="text-sm text-gray-600">Current color: {hex}</p>

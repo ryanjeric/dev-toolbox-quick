@@ -75,6 +75,7 @@ const TOOLS: Tool[] = [
   { name: 'Breathing Exercise Timer', path: '/breathing-exercise-timer', keywords: ['breathing', 'exercise', 'timer'] },
   { name: 'Digital Zen Garden', path: '/digital-zen-garden', keywords: ['zen', 'garden', 'relax'] },
   { name: 'Cloud Shape Generator', path: '/cloud-shape-generator', keywords: ['cloud', 'shape', 'generate'] },
+  { name: 'Touch the Grass', path: '/touch-the-grass', keywords: ['grass', 'relax', 'nature', 'break'] },
 ];
 
 export const useSearch = () => {

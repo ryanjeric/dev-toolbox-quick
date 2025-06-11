@@ -11,7 +11,6 @@ type ScheduleOption = "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "cu
 
 const CronJobGeneratorPage = () => {
   const [scheduleOption, setScheduleOption] = useState<ScheduleOption>("hourly");
-  const [command, setCommand] = useState<string>("");
   const [minute, setMinute] = useState<string>("0");
   const [hour, setHour] = useState<string>("0");
   const [dayOfMonth, setDayOfMonth] = useState<string>("*");
@@ -19,8 +18,6 @@ const CronJobGeneratorPage = () => {
   const [dayOfWeek, setDayOfWeek] = useState<string>("*");
 
   const generatedCron = useMemo(() => {
-    if (!command.trim()) return "";
-
     let cronExpression = "";
 
     switch (scheduleOption) {
@@ -46,13 +43,11 @@ const CronJobGeneratorPage = () => {
         break;
     }
 
-    return `${cronExpression} ${command.trim()}`;
-
-  }, [scheduleOption, minute, hour, dayOfMonth, month, dayOfWeek, command]);
+    return cronExpression;
+  }, [scheduleOption, minute, hour, dayOfMonth, month, dayOfWeek]);
 
   const handleClear = () => {
     setScheduleOption("hourly");
-    setCommand("");
     setMinute("0");
     setHour("0");
     setDayOfMonth("*");
@@ -179,9 +174,9 @@ const CronJobGeneratorPage = () => {
     <div className="container mx-auto p-4">
       <Card>
         <CardHeader>
-          <CardTitle>Cron Job Generator</CardTitle>
+          <CardTitle>Cron Schedule Generator</CardTitle>
           <CardDescription>
-            Generate cron expressions for scheduling tasks
+            Generate cron schedule expressions for scheduling tasks
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -207,22 +202,10 @@ const CronJobGeneratorPage = () => {
             {/* Time Inputs based on Schedule */}
             {renderTimeInputs()}
 
-            {/* Command Input */}
-            <div className="space-y-2">
-              <Label htmlFor="command">Command:</Label>
-              <Input
-                id="command"
-                type="text"
-                value={command}
-                onChange={(e) => setCommand(e.target.value)}
-                placeholder="e.g., /usr/bin/backup.sh"
-              />
-            </div>
-
             {/* Generated Cron Expression */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="cronOutput">Generated Cron Expression:</Label>
+                <Label htmlFor="cronOutput">Generated Cron Schedule:</Label>
                 <Button variant="link" size="sm" onClick={() => copyToClipboard(generatedCron)} disabled={!generatedCron}>
                   Copy
                 </Button>
@@ -231,14 +214,14 @@ const CronJobGeneratorPage = () => {
                 id="cronOutput"
                 value={generatedCron}
                 readOnly
-                placeholder="Cron expression will appear here..."
+                placeholder="Cron schedule will appear here..."
                 className="min-h-[60px] font-mono text-sm"
               />
             </div>
 
             {/* Clear Button */}
              <div>
-               <Button variant="outline" onClick={handleClear} disabled={!command}>
+               <Button variant="outline" onClick={handleClear}>
                  Clear
                </Button>
              </div>

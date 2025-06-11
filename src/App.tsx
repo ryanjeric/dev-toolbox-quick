@@ -81,6 +81,9 @@ import DigitalZenGardenPage from "./pages/DigitalZenGardenPage";
 import CloudShapeGeneratorPage from "./pages/CloudShapeGeneratorPage";
 import TicTacToe from './pages/games/TicTacToe';
 import MemoryMatch from './pages/games/MemoryMatch';
+import TouchTheGrass from "./pages/TouchTheGrass";
+import BubbleWrap from './pages/BubbleWrap';
+import BubbleFidget from './pages/BubbleFidget';
 
 const queryClient = new QueryClient();
 
@@ -100,6 +103,9 @@ const AppContent = () => {
             <Route path="/breathing-exercise-timer" element={<BreathingExerciseTimerPage />} />
             <Route path="/digital-zen-garden" element={<DigitalZenGardenPage />} />
             <Route path="/cloud-shape-generator" element={<CloudShapeGeneratorPage />} />
+            <Route path="/touch-the-grass" element={<TouchTheGrass />} />
+            <Route path="/bubble-wrap" element={<BubbleWrap />} />
+            <Route path="/bubble-fidget" element={<BubbleFidget />} />
             <Route path="/json" element={<JsonPage />} />
             <Route path="/csv-json" element={<CsvJsonPage />} />
             <Route path="/url" element={<UrlPage />} />

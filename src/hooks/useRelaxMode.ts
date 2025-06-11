@@ -4,6 +4,7 @@ const RELAX_TOOLS = [
   '/breathing-exercise-timer',
   '/digital-zen-garden',
   '/cloud-shape-generator',
+  '/touch-the-grass',
 ];
 
 export const useRelaxMode = () => {

@@ -4,6 +4,7 @@ const TOOL_PATHS = [
   '/breathing-exercise-timer',
   '/digital-zen-garden',
   '/cloud-shape-generator',
+  '/touch-the-grass',
   '/json',
   '/csv-json',
   '/url',

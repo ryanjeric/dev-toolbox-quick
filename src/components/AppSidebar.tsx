@@ -38,7 +38,12 @@ import {
   TreePine,
   CloudIcon,
   LucideIcon,
-  Grid
+  Grid,
+  Wind,
+  Flower2,
+  Cloud,
+  Popcorn,
+  Sparkles
 } from "lucide-react";
 import {
   Sidebar,
@@ -75,9 +80,12 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
   {
     category: "Stress Reliever Tools",
     items: [
-      { name: "Breathing Exercise Timer", path: "/breathing-exercise-timer", icon: Timer },
-      { name: "Digital Zen Garden", path: "/digital-zen-garden", icon: TreePine },
-      { name: "Cloud Shape Generator", path: "/cloud-shape-generator", icon: CloudIcon },
+      { name: "Breathing Exercise Timer", path: "/breathing-exercise", icon: Wind },
+      { name: "Digital Zen Garden", path: "/zen-garden", icon: Flower2 },
+      { name: "Cloud Shape Generator", path: "/cloud-shapes", icon: Cloud },
+      { name: "Touch the Grass", path: "/touch-the-grass", icon: TreePine },
+      { name: "Bubble Wrap", path: "/bubble-wrap", icon: Popcorn },
+      { name: "Light up Bubble Fidget", path: "/bubble-fidget", icon: Sparkles },
     ]
   },
   {
@@ -227,7 +235,12 @@ const iconMap: { [key: string]: LucideIcon } = {
   Timer,
   TreePine,
   CloudIcon,
-  Grid
+  Grid,
+  Wind,
+  Flower2,
+  Cloud,
+  Popcorn,
+  Sparkles
 };
 
 export function AppSidebar() {

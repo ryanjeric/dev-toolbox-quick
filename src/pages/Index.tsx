@@ -40,7 +40,12 @@ import {
   Timer,
   TreePine,
   CloudIcon,
-  Apple
+  Apple,
+  Wind,
+  Flower2,
+  Cloud,
+  Popcorn,
+  Sparkles
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -58,9 +63,12 @@ const categorizedTools = [
   {
     category: "Stress Reliever Tools",
     items: [
-      { name: "Breathing Exercise Timer", description: "Guided breathing exercises with customizable timers", path: "/breathing-exercise-timer", icon: Timer, color: "from-blue-500 to-blue-600" },
-      { name: "Digital Zen Garden", description: "Create and maintain a peaceful digital garden", path: "/digital-zen-garden", icon: TreePine, color: "from-green-500 to-green-600" },
-      { name: "Cloud Shape Generator", description: "Generate and watch calming cloud shapes", path: "/cloud-shape-generator", icon: CloudIcon, color: "from-sky-500 to-sky-600" },
+      { name: "Breathing Exercise Timer", description: "Guided breathing exercises with customizable timers", path: "/breathing-exercise", icon: Wind, color: "from-blue-500 to-blue-600" },
+      { name: "Digital Zen Garden", description: "Create and maintain a peaceful digital garden", path: "/zen-garden", icon: Flower2, color: "from-pink-500 to-pink-600" },
+      { name: "Cloud Shape Generator", description: "Generate and watch calming cloud shapes", path: "/cloud-shapes", icon: Cloud, color: "from-sky-500 to-sky-600" },
+      { name: "Touch the Grass", description: "Interact with a calming digital grass field", path: "/touch-the-grass", icon: TreePine, color: "from-green-500 to-green-600" },
+      { name: "Bubble Wrap", description: "Pop virtual bubbles for stress relief", path: "/bubble-wrap", icon: Popcorn, color: "from-purple-500 to-purple-600" },
+      { name: "Light up Bubble Fidget", description: "Interactive light-up bubble fidget toy", path: "/bubble-fidget", icon: Sparkles, color: "from-indigo-500 to-indigo-600" },
     ]
   },
   {
