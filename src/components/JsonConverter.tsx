@@ -20,7 +20,10 @@ const JsonConverter = () => {
     }
     try {
       const parsed = JSON.parse(input);
-      setJsonOutput(JSON.stringify(parsed));
+      // Convert JSON to escaped string format that can be used in code
+      const jsonString = JSON.stringify(parsed);
+      const escapedString = JSON.stringify(jsonString);
+      setJsonOutput(escapedString);
     } catch (err) {
       setJsonOutput("Invalid JSON");
     }
@@ -57,7 +60,7 @@ const JsonConverter = () => {
       <CardContent>
         <Tabs defaultValue="json-to-string" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="json-to-string">JSON → String</TabsTrigger>
+            <TabsTrigger value="json-to-string">JSON → Escaped String</TabsTrigger>
             <TabsTrigger value="string-to-json">String → JSON</TabsTrigger>
           </TabsList>
           
@@ -79,7 +82,7 @@ const JsonConverter = () => {
             {jsonOutput && (
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-sm font-medium">String output:</label>
+                  <label className="text-sm font-medium">Escaped string output:</label>
                   <Button
                     size="sm"
                     variant="outline"
