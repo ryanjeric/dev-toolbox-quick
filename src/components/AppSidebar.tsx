@@ -82,10 +82,10 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
     items: [
       { name: "Breathing Exercise Timer", path: "/breathing-exercise", icon: Wind },
       { name: "Digital Zen Garden", path: "/zen-garden", icon: Flower2 },
-      { name: "Cloud Shape Generator", path: "/cloud-shapes", icon: Cloud },
-      { name: "Touch the Grass", path: "/touch-the-grass", icon: TreePine },
-      { name: "Bubble Wrap", path: "/bubble-wrap", icon: Popcorn },
-      { name: "Light up Bubble Fidget", path: "/bubble-fidget", icon: Sparkles },
+      // { name: "Cloud Shape Generator", path: "/cloud-shapes", icon: Cloud },
+      // { name: "Touch the Grass", path: "/touch-the-grass", icon: TreePine },
+      // { name: "Bubble Wrap", path: "/bubble-wrap", icon: Popcorn },
+      // { name: "Light up Bubble Fidget", path: "/bubble-fidget", icon: Sparkles },
     ]
   },
   {
