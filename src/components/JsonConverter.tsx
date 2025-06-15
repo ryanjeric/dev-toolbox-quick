@@ -95,7 +95,7 @@ const JsonConverter = () => {
                 <Textarea
                   value={jsonOutput}
                   readOnly
-                  className="font-mono text-sm bg-slate-50"
+                  className="font-mono text-sm bg-muted"
                   rows={3}
                 />
               </div>
