@@ -331,13 +331,12 @@ const Index = () => {
           </p>
           <p className="text-slate-500 dark:text-slate-400">
             Developed by{" "}
-            <a 
-              href="#"
-              rel="noopener noreferrer"
-              className="text-blue-600 dark:text-blue-400 hover:underline"
+            <Link 
+              to="/about-developer"
+              className="text-blue-600 dark:text-blue-400 hover:underline transition-colors"
             >
-              MR - Rai
-            </a>
+              Ryan Jeric
+            </Link>
           </p>
         </div>
       </div>

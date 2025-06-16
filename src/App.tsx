@@ -86,6 +86,7 @@ import MemoryMatch from './pages/games/MemoryMatch';
 import TouchTheGrass from "./pages/TouchTheGrass";
 import BubbleWrap from './pages/BubbleWrap';
 import BubbleFidget from './pages/BubbleFidget';
+import AboutDeveloperPage from "./pages/AboutDeveloperPage";
 
 const queryClient = new QueryClient();
 
@@ -177,6 +178,7 @@ const AppContent = () => {
             <Route path="/todo-list" element={<TodoListPage />} />
             <Route path="/games/tic-tac-toe" element={<TicTacToe />} />
             <Route path="/games/memory-match" element={<MemoryMatch />} />
+            <Route path="/about-developer" element={<AboutDeveloperPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
