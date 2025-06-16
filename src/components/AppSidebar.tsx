@@ -141,6 +141,7 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
       { name: "SVG URL Encoder", path: "/svg-url-encoder", icon: Code },
       { name: "HTTP Status Code Explainer", path: "/http-status-code-explainer", icon: Info },
       { name: "Responsive Image Tester", path: "/responsive-image-tester", icon: Smartphone },
+      { name: "AWS Status", path: "/aws-status", icon: Cloud },
       { name: "BigCommerce Status", path: "/bigcommerce-status", icon: Globe },
       { name: "Shopify Status", path: "/shopify-status", icon: Globe },
       { name: "Responsive Tester", path: "/responsive-tester", icon: Smartphone }

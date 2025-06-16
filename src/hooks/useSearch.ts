@@ -62,6 +62,7 @@ const TOOLS: Tool[] = [
   { name: 'Ratio Calculator', path: '/ratio-calculator', keywords: ['ratio', 'calculate', 'proportion'] },
   { name: 'BigCommerce Status', path: '/bigcommerce-status', keywords: ['bigcommerce', 'status', 'check'] },
   { name: 'Shopify Status', path: '/shopify-status', keywords: ['shopify', 'status', 'check'] },
+  { name: 'AWS Status', path: '/aws-status', keywords: ['aws', 'amazon', 'status', 'check', 'cloud'] },
   { name: 'Image Resizer', path: '/image-resizer', keywords: ['image', 'resize', 'dimensions'] },
   { name: 'Layout Grid Generator', path: '/layout-grid-generator', keywords: ['layout', 'grid', 'generate'] },
   { name: 'Border Radius Generator', path: '/border-radius-generator', keywords: ['border', 'radius', 'generate'] },

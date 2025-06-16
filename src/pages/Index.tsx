@@ -124,6 +124,7 @@ const categorizedTools = [
       { name: "SVG URL Encoder", description: "Convert SVG to URL-encoded format", path: "/svg-url-encoder", icon: Code, color: "from-blue-500 to-blue-600" },
       { name: "HTTP Status Code Explainer", description: "Get detailed explanations of HTTP status codes", path: "/http-status-code-explainer", icon: Info, color: "from-teal-500 to-teal-600" },
       { name: "Responsive Image Tester", description: "Test how images look on different screen sizes", path: "/responsive-image-tester", icon: Smartphone, color: "from-blue-500 to-blue-600" },
+      { name: "AWS Status", description: "Check the current status of AWS services", path: "/aws-status", icon: Cloud, color: "from-orange-500 to-orange-600" },
       { name: "BigCommerce Status", description: "Check the current status of BigCommerce services", path: "/bigcommerce-status", icon: Globe, color: "from-blue-500 to-blue-600" },
       { name: "Shopify Status", description: "Check the current status of Shopify services", path: "/shopify-status", icon: Globe, color: "from-blue-500 to-blue-600" },
       { name: "Responsive Tester", description: "Preview websites on multiple device sizes in one page", path: "/responsive-tester", icon: Smartphone, color: "from-blue-500 to-blue-600" }
@@ -212,7 +213,8 @@ const iconMap: { [key: string]: LucideIcon } = {
   Monitor,
   Image,
   Replace,
-  Star
+  Star,
+  Cloud
 };
 
 const Index = () => {
