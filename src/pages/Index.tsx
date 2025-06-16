@@ -45,7 +45,8 @@ import {
   Flower2,
   Cloud,
   Popcorn,
-  Sparkles
+  Sparkles,
+  GitBranch
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -127,6 +128,7 @@ const categorizedTools = [
       { name: "AWS Status", description: "Check the current status of AWS services", path: "/aws-status", icon: Cloud, color: "from-orange-500 to-orange-600" },
       { name: "BigCommerce Status", description: "Check the current status of BigCommerce services", path: "/bigcommerce-status", icon: Globe, color: "from-blue-500 to-blue-600" },
       { name: "Shopify Status", description: "Check the current status of Shopify services", path: "/shopify-status", icon: Globe, color: "from-blue-500 to-blue-600" },
+      { name: "Bitbucket Status", description: "Check the current status of Atlassian Bitbucket services", path: "/bitbucket-status", icon: GitBranch, color: "from-blue-600 to-blue-700" },
       { name: "Responsive Tester", description: "Preview websites on multiple device sizes in one page", path: "/responsive-tester", icon: Smartphone, color: "from-blue-500 to-blue-600" }
     ]
   },
@@ -214,7 +216,8 @@ const iconMap: { [key: string]: LucideIcon } = {
   Image,
   Replace,
   Star,
-  Cloud
+  Cloud,
+  GitBranch
 };
 
 const Index = () => {

@@ -77,6 +77,7 @@ const TOOLS: Tool[] = [
   { name: 'Digital Zen Garden', path: '/digital-zen-garden', keywords: ['zen', 'garden', 'relax'] },
   { name: 'Cloud Shape Generator', path: '/cloud-shape-generator', keywords: ['cloud', 'shape', 'generate'] },
   { name: 'Touch the Grass', path: '/touch-the-grass', keywords: ['grass', 'relax', 'nature', 'break'] },
+  { name: 'Bitbucket Status', path: '/bitbucket-status', keywords: ['bitbucket', 'atlassian', 'git', 'status', 'check'] },
 ];
 
 export const useSearch = () => {

@@ -67,6 +67,7 @@ import RatioCalculatorPage from "./pages/RatioCalculatorPage";
 import BigCommerceStatusPage from "./pages/BigCommerceStatusPage";
 import ShopifyStatusPage from "./pages/ShopifyStatusPage";
 import AwsStatusPage from "./pages/AwsStatusPage";
+import BitbucketStatusPage from "./pages/BitbucketStatusPage";
 import ImageResizerPage from "./pages/ImageResizer";
 import LayoutGridGeneratorPage from "./pages/LayoutGridGenerator";
 import BorderRadiusGeneratorPage from "./pages/BorderRadiusGenerator";
@@ -163,6 +164,7 @@ const AppContent = () => {
             <Route path="/bigcommerce-status" element={<BigCommerceStatusPage />} />
             <Route path="/shopify-status" element={<ShopifyStatusPage />} />
             <Route path="/aws-status" element={<AwsStatusPage />} />
+            <Route path="/bitbucket-status" element={<BitbucketStatusPage />} />
             <Route path="/image-resizer" element={<ImageResizerPage />} />
             <Route path="/layout-grid-generator" element={<LayoutGridGeneratorPage />} />
             <Route path="/border-radius-generator" element={<BorderRadiusGeneratorPage />} />

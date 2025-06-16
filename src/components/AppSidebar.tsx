@@ -43,7 +43,8 @@ import {
   Flower2,
   Cloud,
   Popcorn,
-  Sparkles
+  Sparkles,
+  GitBranch
 } from "lucide-react";
 import {
   Sidebar,
@@ -144,6 +145,7 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
       { name: "AWS Status", path: "/aws-status", icon: Cloud },
       { name: "BigCommerce Status", path: "/bigcommerce-status", icon: Globe },
       { name: "Shopify Status", path: "/shopify-status", icon: Globe },
+      { name: "Bitbucket Status", path: "/bitbucket-status", icon: GitBranch },
       { name: "Responsive Tester", path: "/responsive-tester", icon: Smartphone }
     ]
   },
@@ -241,7 +243,8 @@ const iconMap: { [key: string]: LucideIcon } = {
   Flower2,
   Cloud,
   Popcorn,
-  Sparkles
+  Sparkles,
+  GitBranch
 };
 
 export function AppSidebar() {
