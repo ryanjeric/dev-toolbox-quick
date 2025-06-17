@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -122,13 +121,20 @@ export default function BreathingExerciseTimerPage() {
   useEffect(() => {
     // Handle ambient sound
     if (isActive && soundEnabled && audioRef.current) {
-      audioRef.current.play().catch(() => {
-        // Ignore autoplay restrictions
+      audioRef.current.play().catch((error) => {
+        console.warn('Could not play ambient sound:', error);
+        // Optionally show a toast notification
+        toast({
+          title: "Audio Notice",
+          description: "Ambient sound couldn't play automatically. You may need to interact with the page first.",
+          variant: "default",
+        });
       });
     } else if (audioRef.current) {
       audioRef.current.pause();
+      audioRef.current.currentTime = 0; // Reset to beginning
     }
-  }, [isActive, soundEnabled]);
+  }, [isActive, soundEnabled, toast]);
 
   const handleStart = () => {
     setIsActive(true);
@@ -352,10 +358,10 @@ export default function BreathingExerciseTimerPage() {
         {/* Hidden audio element for ambient sounds */}
         <audio
           ref={audioRef}
-          preload="none"
-        >
-          <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEIJHfH8N2QQAoUXrTp66hVFApGn+DyvmkgCjeL0fPTgjEI=" type="audio/wav" />
-        </audio>
+          preload="metadata"
+          src="/ambient-sound.mp3"
+          loop
+        />
       </div>
     </div>
   );
