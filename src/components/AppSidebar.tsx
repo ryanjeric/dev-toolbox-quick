@@ -81,8 +81,8 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
   {
     category: "Stress Reliever Tools",
     items: [
-      { name: "Breathing Exercise Timer", path: "/breathing-exercise", icon: Wind },
-      { name: "Digital Zen Garden", path: "/zen-garden", icon: Flower2 },
+      { name: "Breathing Exercise Timer", path: "/breathing-exercise-timer", icon: Wind },
+      { name: "Digital Zen Garden", path: "/digital-zen-garden", icon: Flower2 },
       // { name: "Cloud Shape Generator", path: "/cloud-shapes", icon: Cloud },
       // { name: "Touch the Grass", path: "/touch-the-grass", icon: TreePine },
       // { name: "Bubble Wrap", path: "/bubble-wrap", icon: Popcorn },
