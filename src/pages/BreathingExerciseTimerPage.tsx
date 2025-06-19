@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
-import { Play, Pause, RotateCcw, Volume2, VolumeX } from "lucide-react";
+import { Play, Pause, RotateCcw, Volume2, VolumeX, Maximize2, Minimize2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface BreathingTechnique {
@@ -54,6 +54,7 @@ export default function BreathingExerciseTimerPage() {
   const [sessionDuration, setSessionDuration] = useState([5]); // minutes
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [sessionTime, setSessionTime] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const { toast } = useToast();
@@ -165,6 +166,10 @@ export default function BreathingExerciseTimerPage() {
     }
   };
 
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
+  };
+
   const getPhaseText = () => {
     switch (currentPhase) {
       case 'inhale':
@@ -179,11 +184,11 @@ export default function BreathingExerciseTimerPage() {
   const getPhaseColor = () => {
     switch (currentPhase) {
       case 'inhale':
-        return 'from-blue-400 to-blue-600';
+        return 'from-blue-500 to-blue-700';
       case 'hold':
-        return 'from-purple-400 to-purple-600';
+        return 'from-indigo-500 to-indigo-700';
       case 'exhale':
-        return 'from-green-400 to-green-600';
+        return 'from-teal-500 to-teal-700';
     }
   };
 
@@ -191,11 +196,11 @@ export default function BreathingExerciseTimerPage() {
     const progress = (selectedTechnique[currentPhase] - timeLeft) / selectedTechnique[currentPhase];
     
     if (currentPhase === 'inhale') {
-      return 0.5 + (progress * 0.5); // Scale from 0.5 to 1
+      return 0.3 + (progress * 0.7); // Scale from 0.3 to 1.0 for dramatic expansion
     } else if (currentPhase === 'exhale') {
-      return 1 - (progress * 0.5); // Scale from 1 to 0.5
+      return 1.0 - (progress * 0.7); // Scale from 1.0 to 0.3 for dramatic contraction
     } else {
-      return 1; // Hold at full size
+      return 1.0; // Hold at full size
     }
   };
 
@@ -206,18 +211,29 @@ export default function BreathingExerciseTimerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 py-8">
+    <div className={`${isFullscreen ? 'fixed inset-0 z-50' : 'min-h-screen'} bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 py-8`}>
       <div className="container mx-auto px-4 max-w-4xl">
-        <h1 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-          Breathing Exercise Timer
-        </h1>
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Breathing Exercise Timer
+          </h1>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={toggleFullscreen}
+            className="flex items-center gap-2"
+          >
+            {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+            {isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
+          </Button>
+        </div>
         <p className="text-center text-slate-600 dark:text-slate-400 mb-8">
           Practice mindful breathing with guided visual cues and timing
         </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className={`grid gap-6 ${isFullscreen ? 'grid-cols-1 lg:grid-cols-4' : 'grid-cols-1 lg:grid-cols-3'}`}>
           {/* Controls */}
-          <Card className="lg:col-span-1">
+          <Card className={`${isFullscreen ? 'lg:col-span-1' : 'lg:col-span-1'}`}>
             <CardHeader>
               <CardTitle>Settings</CardTitle>
             </CardHeader>
@@ -295,33 +311,28 @@ export default function BreathingExerciseTimerPage() {
           </Card>
 
           {/* Breathing Animation */}
-          <Card className="lg:col-span-2">
+          <Card className={`${isFullscreen ? 'lg:col-span-3' : 'lg:col-span-2'}`}>
             <CardContent className="p-8">
-              <div className="flex flex-col items-center justify-center min-h-[400px] space-y-8">
-                {/* Breathing Circle */}
+              <div className="flex flex-col items-center justify-center min-h-[500px] space-y-8">
+                {/* Breathing Circle - eXHALeR style */}
                 <div className="relative flex items-center justify-center">
                   <div
-                    className={`w-64 h-64 rounded-full bg-gradient-to-br ${getPhaseColor()} transition-transform duration-1000 ease-in-out flex items-center justify-center shadow-2xl`}
+                    className={`w-80 h-80 rounded-full bg-gradient-to-br ${getPhaseColor()} transition-all duration-1000 ease-in-out flex items-center justify-center shadow-lg border-4 border-white/20 animate-pulse`}
                     style={{
                       transform: `scale(${getCircleScale()})`,
+                      animation: 'pulse 3s ease-in-out infinite',
                     }}
                   >
                     <div className="text-white text-center">
-                      <div className="text-2xl font-bold mb-2">{getPhaseText()}</div>
-                      <div className="text-4xl font-mono">{timeLeft}</div>
+                      <div className="text-3xl font-bold mb-4">{getPhaseText()}</div>
+                      <div className="text-6xl font-mono font-light">{timeLeft}</div>
                     </div>
                   </div>
-                  
-                  {/* Breathing rings */}
-                  <div className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse" 
-                       style={{ animation: 'pulse 2s infinite' }}></div>
-                  <div className="absolute inset-4 rounded-full border border-white/10 animate-pulse" 
-                       style={{ animation: 'pulse 3s infinite 0.5s' }}></div>
                 </div>
 
                 {/* Phase Instructions */}
-                <div className="text-center">
-                  <div className="text-lg text-muted-foreground mb-2">
+                <div className="text-center max-w-md">
+                  <div className="text-lg text-muted-foreground leading-relaxed">
                     {currentPhase === 'inhale' && "Slowly breathe in through your nose"}
                     {currentPhase === 'hold' && "Hold your breath gently"}
                     {currentPhase === 'exhale' && "Slowly breathe out through your mouth"}
