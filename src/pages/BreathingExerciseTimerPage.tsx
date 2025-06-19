@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
-import { Play, Pause, RotateCcw, Volume2, VolumeX, Maximize2, Minimize2 } from "lucide-react";
+import { Play, Pause, RotateCcw, Volume2, VolumeX } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface BreathingTechnique {
@@ -54,7 +54,6 @@ export default function BreathingExerciseTimerPage() {
   const [sessionDuration, setSessionDuration] = useState([5]); // minutes
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [sessionTime, setSessionTime] = useState(0);
-  const [isFullscreen, setIsFullscreen] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const { toast } = useToast();
@@ -166,10 +165,6 @@ export default function BreathingExerciseTimerPage() {
     }
   };
 
-  const toggleFullscreen = () => {
-    setIsFullscreen(!isFullscreen);
-  };
-
   const getPhaseText = () => {
     switch (currentPhase) {
       case 'inhale':
@@ -184,11 +179,11 @@ export default function BreathingExerciseTimerPage() {
   const getPhaseColor = () => {
     switch (currentPhase) {
       case 'inhale':
-        return 'text-teal-400';
+        return 'from-blue-400 to-blue-600';
       case 'hold':
-        return 'text-teal-400';
+        return 'from-purple-400 to-purple-600';
       case 'exhale':
-        return 'text-teal-400';
+        return 'from-green-400 to-green-600';
     }
   };
 
@@ -196,11 +191,11 @@ export default function BreathingExerciseTimerPage() {
     const progress = (selectedTechnique[currentPhase] - timeLeft) / selectedTechnique[currentPhase];
     
     if (currentPhase === 'inhale') {
-      return 0.3 + (progress * 0.7); // Scale from 0.3 to 1.0 for dramatic expansion
+      return 0.5 + (progress * 0.5); // Scale from 0.5 to 1
     } else if (currentPhase === 'exhale') {
-      return 1.0 - (progress * 0.7); // Scale from 1.0 to 0.3 for dramatic contraction
+      return 1 - (progress * 0.5); // Scale from 1 to 0.5
     } else {
-      return 1.0; // Hold at full size
+      return 1; // Hold at full size
     }
   };
 
@@ -211,37 +206,26 @@ export default function BreathingExerciseTimerPage() {
   };
 
   return (
-    <div className={`${isFullscreen ? 'fixed inset-0 z-50' : 'min-h-screen'} bg-black`}>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 py-8">
       <div className="container mx-auto px-4 max-w-4xl">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-teal-400">
-            Breathing Exercise Timer
-          </h1>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={toggleFullscreen}
-            className="flex items-center gap-2 border-teal-400 text-teal-400 hover:bg-teal-400/10"
-          >
-            {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
-            {isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
-          </Button>
-        </div>
-        <p className="text-center text-teal-400/70 mb-8">
+        <h1 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          Breathing Exercise Timer
+        </h1>
+        <p className="text-center text-slate-600 dark:text-slate-400 mb-8">
           Practice mindful breathing with guided visual cues and timing
         </p>
 
-        <div className={`grid gap-6 ${isFullscreen ? 'grid-cols-1 lg:grid-cols-4' : 'grid-cols-1 lg:grid-cols-3'}`}>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Controls */}
-          <Card className={`${isFullscreen ? 'lg:col-span-1' : 'lg:col-span-1'} bg-black/50 border-teal-400/20`}>
+          <Card className="lg:col-span-1">
             <CardHeader>
-              <CardTitle className="text-teal-400">Settings</CardTitle>
+              <CardTitle>Settings</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <label className="text-sm font-medium mb-2 block text-teal-400">Breathing Technique</label>
+                <label className="text-sm font-medium mb-2 block">Breathing Technique</label>
                 <Select value={selectedTechnique.name} onValueChange={handleTechniqueChange}>
-                  <SelectTrigger className="border-teal-400/20 text-teal-400">
+                  <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -252,13 +236,13 @@ export default function BreathingExerciseTimerPage() {
                     ))}
                   </SelectContent>
                 </Select>
-                <p className="text-xs text-teal-400/70 mt-1">
+                <p className="text-xs text-muted-foreground mt-1">
                   {selectedTechnique.description}
                 </p>
               </div>
 
               <div>
-                <label className="text-sm font-medium mb-2 block text-teal-400">
+                <label className="text-sm font-medium mb-2 block">
                   Session Duration: {sessionDuration[0]} minutes
                 </label>
                 <Slider
@@ -272,20 +256,19 @@ export default function BreathingExerciseTimerPage() {
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-teal-400">Ambient Sound</span>
+                <span className="text-sm font-medium">Ambient Sound</span>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => setSoundEnabled(!soundEnabled)}
-                  className="border-teal-400/20 text-teal-400 hover:bg-teal-400/10"
                 >
                   {soundEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
                 </Button>
               </div>
 
               <div className="space-y-2">
-                <h3 className="text-sm font-medium text-teal-400">Pattern</h3>
-                <div className="text-xs text-teal-400/70">
+                <h3 className="text-sm font-medium">Pattern</h3>
+                <div className="text-xs text-muted-foreground">
                   Inhale: {selectedTechnique.inhale}s
                   {selectedTechnique.hold > 0 && ` • Hold: ${selectedTechnique.hold}s`}
                   • Exhale: {selectedTechnique.exhale}s
@@ -294,17 +277,17 @@ export default function BreathingExerciseTimerPage() {
 
               <div className="flex gap-2">
                 {!isActive ? (
-                  <Button onClick={handleStart} className="flex-1 bg-teal-400 text-black hover:bg-teal-500">
+                  <Button onClick={handleStart} className="flex-1">
                     <Play className="h-4 w-4 mr-2" />
                     Start
                   </Button>
                 ) : (
-                  <Button onClick={handlePause} variant="outline" className="flex-1 border-teal-400 text-teal-400 hover:bg-teal-400/10">
+                  <Button onClick={handlePause} variant="outline" className="flex-1">
                     <Pause className="h-4 w-4 mr-2" />
                     Pause
                   </Button>
                 )}
-                <Button onClick={handleStop} variant="outline" className="border-teal-400 text-teal-400 hover:bg-teal-400/10">
+                <Button onClick={handleStop} variant="outline">
                   <RotateCcw className="h-4 w-4" />
                 </Button>
               </div>
@@ -312,49 +295,33 @@ export default function BreathingExerciseTimerPage() {
           </Card>
 
           {/* Breathing Animation */}
-          <Card className={`${isFullscreen ? 'lg:col-span-3' : 'lg:col-span-2'} bg-black/50 border-teal-400/20`}>
+          <Card className="lg:col-span-2">
             <CardContent className="p-8">
-              <div className="flex flex-col items-center justify-center min-h-[500px] space-y-8">
-                {/* Breathing Circle - Progress Ring Style */}
+              <div className="flex flex-col items-center justify-center min-h-[400px] space-y-8">
+                {/* Breathing Circle */}
                 <div className="relative flex items-center justify-center">
-                  <svg className="w-96 h-96 -rotate-90 transform">
-                    {/* Background circle */}
-                    <circle
-                      className="text-teal-400/10"
-                      strokeWidth="8"
-                      stroke="currentColor"
-                      fill="transparent"
-                      r="160"
-                      cx="192"
-                      cy="192"
-                    />
-                    {/* Progress circle */}
-                    <circle
-                      className="text-teal-400"
-                      strokeWidth="8"
-                      strokeLinecap="round"
-                      stroke="currentColor"
-                      fill="transparent"
-                      r="160"
-                      cx="192"
-                      cy="192"
-                      strokeDasharray={`${2 * Math.PI * 160}`}
-                      strokeDashoffset={2 * Math.PI * 160 * (1 - (selectedTechnique[currentPhase] - timeLeft) / selectedTechnique[currentPhase])}
-                    />
-                  </svg>
-                  
-                  {/* Center text */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="text-4xl font-light text-teal-400 mb-2">{getPhaseText().toLowerCase()}</div>
-                      <div className="text-6xl font-light text-teal-400">{timeLeft}</div>
+                  <div
+                    className={`w-64 h-64 rounded-full bg-gradient-to-br ${getPhaseColor()} transition-transform duration-1000 ease-in-out flex items-center justify-center shadow-2xl`}
+                    style={{
+                      transform: `scale(${getCircleScale()})`,
+                    }}
+                  >
+                    <div className="text-white text-center">
+                      <div className="text-2xl font-bold mb-2">{getPhaseText()}</div>
+                      <div className="text-4xl font-mono">{timeLeft}</div>
                     </div>
                   </div>
+                  
+                  {/* Breathing rings */}
+                  <div className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse" 
+                       style={{ animation: 'pulse 2s infinite' }}></div>
+                  <div className="absolute inset-4 rounded-full border border-white/10 animate-pulse" 
+                       style={{ animation: 'pulse 3s infinite 0.5s' }}></div>
                 </div>
 
                 {/* Phase Instructions */}
-                <div className="text-center max-w-md">
-                  <div className="text-lg text-teal-400/70 leading-relaxed">
+                <div className="text-center">
+                  <div className="text-lg text-muted-foreground mb-2">
                     {currentPhase === 'inhale' && "Slowly breathe in through your nose"}
                     {currentPhase === 'hold' && "Hold your breath gently"}
                     {currentPhase === 'exhale' && "Slowly breathe out through your mouth"}
@@ -365,23 +332,23 @@ export default function BreathingExerciseTimerPage() {
           </Card>
 
           {/* Stats */}
-          <Card className="lg:col-span-3 bg-black/50 border-teal-400/20">
+          <Card className="lg:col-span-3">
             <CardHeader>
-              <CardTitle className="text-teal-400">Session Stats</CardTitle>
+              <CardTitle>Session Stats</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
-                  <div className="text-2xl font-bold text-teal-400">{totalCycles}</div>
-                  <div className="text-sm text-teal-400/70">Cycles Completed</div>
+                  <div className="text-2xl font-bold text-blue-600">{totalCycles}</div>
+                  <div className="text-sm text-muted-foreground">Cycles Completed</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-teal-400">{formatTime(sessionTime)}</div>
-                  <div className="text-sm text-teal-400/70">Session Time</div>
+                  <div className="text-2xl font-bold text-green-600">{formatTime(sessionTime)}</div>
+                  <div className="text-sm text-muted-foreground">Session Time</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-teal-400">{formatTime(sessionDuration[0] * 60 - sessionTime)}</div>
-                  <div className="text-sm text-teal-400/70">Time Remaining</div>
+                  <div className="text-2xl font-bold text-purple-600">{formatTime(sessionDuration[0] * 60 - sessionTime)}</div>
+                  <div className="text-sm text-muted-foreground">Time Remaining</div>
                 </div>
               </div>
             </CardContent>
