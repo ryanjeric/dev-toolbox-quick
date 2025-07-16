@@ -1,5 +1,4 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calculator as CalculatorIcon } from "lucide-react";
@@ -84,6 +83,31 @@ export default function Calculator() {
       setDisplay(display + '.');
     }
   };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key >= '0' && e.key <= '9') {
+        inputNumber(e.key);
+      } else if (e.key === '.') {
+        inputDecimal();
+      } else if (e.key === '+' || e.key === '-') {
+        inputOperator(e.key);
+      } else if (e.key === '*' || e.key === 'x' || e.key === 'X') {
+        inputOperator('×');
+      } else if (e.key === '/' || e.key === '÷') {
+        inputOperator('÷');
+      } else if (e.key === 'Enter' || e.key === '=') {
+        performCalculation();
+      } else if (e.key === 'Backspace') {
+        clearEntry();
+      } else if (e.key === 'Escape') {
+        clear();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [display, waitingForOperand, operation, previousValue]);
 
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-200px)]">

@@ -46,7 +46,8 @@ import {
   Cloud,
   Popcorn,
   Sparkles,
-  GitBranch
+  GitBranch,
+  Key
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -65,11 +66,6 @@ const categorizedTools = [
     category: "Stress Reliever Tools",
     items: [
       { name: "Breathing Exercise Timer", description: "Guided breathing exercises with customizable timers", path: "/breathing-exercise-timer", icon: Wind, color: "from-blue-500 to-blue-600" },
-      { name: "Digital Zen Garden", description: "Create and maintain a peaceful digital garden", path: "/digital-zen-garden", icon: Flower2, color: "from-pink-500 to-pink-600" },
-      // { name: "Cloud Shape Generator", description: "Generate and watch calming cloud shapes", path: "/cloud-shapes", icon: Cloud, color: "from-sky-500 to-sky-600" },
-      // { name: "Touch the Grass", description: "Interact with a calming digital grass field", path: "/touch-the-grass", icon: TreePine, color: "from-green-500 to-green-600" },
-      // { name: "Bubble Wrap", description: "Pop virtual bubbles for stress relief", path: "/bubble-wrap", icon: Popcorn, color: "from-purple-500 to-purple-600" },
-      // { name: "Light up Bubble Fidget", description: "Interactive light-up bubble fidget toy", path: "/bubble-fidget", icon: Sparkles, color: "from-indigo-500 to-indigo-600" },
     ]
   },
   {
@@ -152,7 +148,8 @@ const categorizedTools = [
       { name: "UUID Generator", description: "Generate random UUIDs", path: "/uuid", icon: Hash, color: "from-yellow-500 to-yellow-600" },
       { name: "Password Strength Checker", description: "Check the strength of your passwords", path: "/password-strength-checker", icon: FileKey, color: "from-red-500 to-red-600" },
       { name: "Checkbox/Radio Generator", description: "Generate styled checkbox and radio inputs", path: "/checkbox-radio-generator", icon: SquareStack, color: "from-blue-500 to-blue-600" },
-      { name: "Developer Excuse Generator", description: "Generate random developer excuses", path: "/developer-excuse-generator", icon: Dice6, color: "from-purple-500 to-purple-600" }
+      { name: "Developer Excuse Generator", description: "Generate random developer excuses", path: "/developer-excuse-generator", icon: Dice6, color: "from-purple-500 to-purple-600" },
+      { name: "JWT Decoder", description: "Decode and parse JSON Web Tokens (JWT)", path: "/jwt-decoder", icon: Key, color: "from-purple-500 to-purple-600" }
     ]
   },
   {
@@ -217,7 +214,8 @@ const iconMap: { [key: string]: LucideIcon } = {
   Replace,
   Star,
   Cloud,
-  GitBranch
+  GitBranch,
+  Key
 };
 
 const Index = () => {

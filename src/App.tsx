@@ -81,6 +81,7 @@ import TodoListPage from "./pages/TodoListPage";
 import BreathingExerciseTimerPage from "./pages/BreathingExerciseTimerPage";
 import DigitalZenGardenPage from "./pages/DigitalZenGardenPage";
 import CloudShapeGeneratorPage from "./pages/CloudShapeGeneratorPage";
+import JwtDecoderPage from "./pages/JwtDecoderPage";
 import TicTacToe from './pages/games/TicTacToe';
 import MemoryMatch from './pages/games/MemoryMatch';
 import TouchTheGrass from "./pages/TouchTheGrass";
@@ -176,6 +177,7 @@ const AppContent = () => {
             <Route path="/skeleton-loader-generator" element={<SkeletonLoaderGeneratorPage />} />
             <Route path="/responsive-tester" element={<ResponsiveTesterPage />} />
             <Route path="/todo-list" element={<TodoListPage />} />
+            <Route path="/jwt-decoder" element={<JwtDecoderPage />} />
             <Route path="/games/tic-tac-toe" element={<TicTacToe />} />
             <Route path="/games/memory-match" element={<MemoryMatch />} />
             <Route path="/about-developer" element={<AboutDeveloperPage />} />

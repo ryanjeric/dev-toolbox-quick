@@ -44,7 +44,8 @@ import {
   Cloud,
   Popcorn,
   Sparkles,
-  GitBranch
+  GitBranch,
+  Key
 } from "lucide-react";
 import {
   Sidebar,
@@ -82,11 +83,6 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
     category: "Stress Reliever Tools",
     items: [
       { name: "Breathing Exercise Timer", path: "/breathing-exercise-timer", icon: Wind },
-      { name: "Digital Zen Garden", path: "/digital-zen-garden", icon: Flower2 },
-      // { name: "Cloud Shape Generator", path: "/cloud-shapes", icon: Cloud },
-      // { name: "Touch the Grass", path: "/touch-the-grass", icon: TreePine },
-      // { name: "Bubble Wrap", path: "/bubble-wrap", icon: Popcorn },
-      // { name: "Light up Bubble Fidget", path: "/bubble-fidget", icon: Sparkles },
     ]
   },
   {
@@ -185,7 +181,8 @@ const categorizedNavigationItems: { category: string; items: NavigationItem[] }[
       { name: "UUID Generator", path: "/uuid", icon: Hash },
       { name: "Password Strength Checker", path: "/password-strength-checker", icon: FileKey },
       { name: "Checkbox/Radio Generator", path: "/checkbox-radio-generator", icon: SquareStack },
-      { name: "Developer Excuse Generator", path: "/developer-excuse-generator", icon: Dice6 }
+      { name: "Developer Excuse Generator", path: "/developer-excuse-generator", icon: Dice6 },
+      { name: "JWT Decoder", path: "/jwt-decoder", icon: Key }
     ]
   },
   {
@@ -244,7 +241,8 @@ const iconMap: { [key: string]: LucideIcon } = {
   Cloud,
   Popcorn,
   Sparkles,
-  GitBranch
+  GitBranch,
+  Key
 };
 
 export function AppSidebar() {
